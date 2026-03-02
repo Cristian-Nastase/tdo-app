@@ -1,0 +1,12 @@
+:root {
+    --rosu: #C8102E;
+    --albastru: #0072B8;
+    --galben: #FFC700;
+    --alb: #FFFFFF;
+    --gri: #4D4D4D;
+}
+
+
+body {
+    background-color: var(--gri);
+}
