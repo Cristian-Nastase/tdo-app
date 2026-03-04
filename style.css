@@ -1,12 +1,16 @@
 :root {
-    --rosu: #C8102E;
-    --albastru: #0072B8;
-    --galben: #FFC700;
-    --alb: #FFFFFF;
-    --gri: #4D4D4D;
+    --red-500: hsl(345, 100%, 40%);
+    --blue-500: hsl(207, 100%, 35%);
+    --yellow-500: hsl(43, 100%, 50%);
+    --orange-600: hsl(16, 100%, 50%);
+    --gray-400: hsl(0, 0%, 20%);
+    --gray-500: hsl(0, 0%, 30%);
+    --gray-800: hsl(0, 0%, 18%);
+    --white: hsl(0, 0%, 100%);
+    --black: #000000;
 }
 
 
 body {
-    background-color: var(--gri);
+    background-color: var(--gray-800);
 }

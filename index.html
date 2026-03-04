@@ -1,12 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>TDO! - build it.</title>
 
-    <link href="style.css" rel="stylesheet" />
+    <link
+        href="style.css"
+        rel="stylesheet"
+    />
+
+    <script
+        type="module"
+        src="Scripts/listLogic.js"
+        defer
+    ></script>
+
+    <script
+        type="module"
+        src="Scripts/Components/taskComponent.js"
+        defer
+    ></script>
+
 </head>
+
 <body>
+    <header>
+        <nav class="nav">
+            <p class="home"><a href="#main">Home</a></p>
+        </nav>
+    </header>
+    <main id="main">
+        <section class="list">
+            <h1 class="list_title">Title</h1>
+            <p class="list__description">This is the description.</p>
+            <div
+                class="list__container"
+                aria-live="polite"
+            >
+
+
+            </div>
+
+            <button
+                type="button"
+                class="spawn"
+            >Spawn new Element</button>
+        </section>
+    </main>
+
+    <section class="prompt">
+        <input class="prompt__line" />
+        <div class="promp__suggestions"></div>
+    </section>
+
+    <dialog class="dialog">
+        <form class="dialog__form">
+            <label></label>
+            <input type="text">
+
+            <label></label>
+        </form>
+    </dialog>
 </body>
+
 </html>
