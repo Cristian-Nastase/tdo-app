@@ -21,9 +21,3 @@ export const getTaskContent = function (index) {
 const listData = [];
 
 const listContainer = document.querySelector(".list__container");
-
-const form = document.getElementById("task-form")
-const addTaskButton = document.querySelector(".list__create");
-
-addTaskButton.addEventListener("click", startDialog);
-form.addEventListener("submit", dialogSubmit);
