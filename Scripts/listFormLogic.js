@@ -1,9 +1,10 @@
 import { newTask } from './listLogic.js';
 
-const dialog = document.getElementById("task-dialog");
+const startDialog = function() {
+    dialog.showModal(); 
+}
 
-const form = document.getElementById("task-form");
-form.addEventListener("submit", dialogSubmit);
+const dialog = document.getElementById("task-dialog");
 
 const addTaskButton = document.querySelector(".list__create");
 addTaskButton.addEventListener("click", startDialog);
@@ -11,12 +12,7 @@ addTaskButton.addEventListener("click", startDialog);
 const closeButton = document.querySelector(".dialog__close");
 closeButton.addEventListener("click", () => dialog.close());
 
-export const startDialog = function() {
-    dialog.showModal();
-    
-}
-
-export const dialogSubmit = function(e) {
+const dialogSubmit = function(e) {
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -26,3 +22,6 @@ export const dialogSubmit = function(e) {
     dialog.close();
     form.reset();
 }
+
+const form = document.getElementById("task-form");
+form.addEventListener("submit", dialogSubmit);
