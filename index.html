@@ -1,31 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDO! - build it.</title>
+    <link href="style.css" rel="stylesheet" />
 
-    <link
-        href="style.css"
-        rel="stylesheet"
-    />
-
-    <script
-        type="module"
-        src="Scripts/listLogic.js"
-        defer
-    ></script>
-
-    <script
-        type="module"
-        src="Scripts/Components/taskComponent.js"
-        defer
-    ></script>
-
+    <script type="module" src="Scripts/listLogic.js" defer></script>
+    <script type="module" src="Scripts/listFormLogic.js" defer></script>
+    <script type="module" src="Scripts/Components/taskComponent.js" defer></script>
 </head>
 
 <body>
@@ -34,22 +17,13 @@
             <p class="home"><a href="#main">Home</a></p>
         </nav>
     </header>
+
     <main id="main">
         <section class="list">
             <h1 class="list_title">Title</h1>
             <p class="list__description">This is the description.</p>
-            <div
-                class="list__container"
-                aria-live="polite"
-            >
-
-
-            </div>
-
-            <button
-                type="button"
-                class="spawn"
-            >Spawn new Element</button>
+            <div class="list__container" aria-live="polite"></div>
+            <button type="button" class="list__create">Add new task</button>
         </section>
     </main>
 
@@ -58,14 +32,45 @@
         <div class="promp__suggestions"></div>
     </section>
 
-    <dialog class="dialog">
-        <form class="dialog__form">
-            <label></label>
-            <input type="text">
+    <dialog id="task-dialog" class="dialog">
+        <button type="button" class="dialog__close">X</button>
 
-            <label></label>
+        <form id="task-form" class="form" method="post">
+            <legend class="form__legend">Task</legend>
+
+            <label for="form-title" class="form__field">
+                <span class="form__label">Name *</span>
+                <input class="form__input" id="form-title" type="text" required name="title"/>
+                <span class="form_error">Enter a task name</span>
+            </label>
+
+            <label for="form-description" class="form__field">
+                <span class="form__label">Description</span>
+                <textarea id="form-description" class="form__textarea" placeholder="Enter a description.." name="description"></textarea>
+            </label>
+
+            <button type="submit" class="form__submit">Create task</button>
         </form>
     </dialog>
-</body>
 
+    <template id="task">
+        <style>
+            .task__input {
+                width: var(--spacing-400);
+            }
+
+            .task__input:hover {
+                cursor: pointer;
+            }
+
+            .task__input:checked + .task__header {
+                text-decoration: line-through;
+            }
+        </style>
+        <input type="checkbox" class="task__input" aria-label="Check task">
+        <h2 class="task__header">
+            <slot name="title"></slot>
+        </h2>
+    </template>
+</body>
 </html>

@@ -1,4 +1,6 @@
 :root {
+    /* Color */
+
     --red-500: hsl(345, 100%, 40%);
     --blue-500: hsl(207, 100%, 35%);
     --yellow-500: hsl(43, 100%, 50%);
@@ -8,9 +10,33 @@
     --gray-800: hsl(0, 0%, 18%);
     --white: hsl(0, 0%, 100%);
     --black: #000000;
+
+    /* Spacing */
+    
+    --spacing-100: 0.5rem;
+    --spacing-200: 1rem;
+    --spacing-300: 1.5rem;
+    --spacing-400: 2rem;
+    --spacing-500: 2.5rem;
+    --spacing-600: 3rem;
+    --spacing-800: 4rem;
+    --spacing-1600: 8rem;
+    --spacing-1800: 9rem;
+    --spacing-2300: 11.5rem;
 }
 
 
 body {
     background-color: var(--gray-800);
+}
+
+task-node {
+    display: flex;
+
+    padding: var(--spacing-200) var(--spacing-600);
+    gap: var(--spacing-300);
+
+    background-color: var(--black);
+    border-radius: 20px;
+    color: var(--white);
 }
