@@ -1,5 +1,3 @@
-import { startDialog, dialogSubmit } from "./listFormLogic.js";
-
 export const newTask = function(data) {
     const taskData = { 
         checked: false,
