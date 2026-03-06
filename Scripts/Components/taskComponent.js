@@ -5,9 +5,8 @@ class Task extends HTMLElement {
 
     static observedAttributes = ["data-index", "checked"];
 
-    constructor(data) {
+    constructor() {
         super();
-
     }
     
     connectedCallback() {

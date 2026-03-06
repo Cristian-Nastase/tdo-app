@@ -29,14 +29,3 @@
 body {
     background-color: var(--gray-800);
 }
-
-task-node {
-    display: flex;
-
-    padding: var(--spacing-200) var(--spacing-600);
-    gap: var(--spacing-300);
-
-    background-color: var(--black);
-    border-radius: 20px;
-    color: var(--white);
-}
