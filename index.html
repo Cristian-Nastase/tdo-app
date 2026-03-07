@@ -20,7 +20,7 @@
 
     <main id="main">
         <section class="list">
-            <h1 class="list_title">Title</h1>
+            <h1 class="list__title">Title</h1>
             <p class="list__description">This is the description.</p>
             <div class="list__container" aria-live="polite"></div>
             <button type="button" class="list__create">Add new task</button>
@@ -29,7 +29,7 @@
 
     <section class="prompt">
         <input class="prompt__line" />
-        <div class="promp__suggestions"></div>
+        <div class="prompt__suggestions"></div>
     </section>
 
     <dialog id="task-dialog" class="dialog">
@@ -39,7 +39,7 @@
 
             <label for="form-title" class="form__field">
                 <span class="form__label">Name *</span>
-                <input class="form__input" id="form-title" type="text" required name="title"/>
+                <input autofocus class="form__input" id="form-title" type="text" required name="title"/>
                 <span class="form_error">Enter a task name</span>
             </label>
 
@@ -54,6 +54,10 @@
 
     <template id="task">
         <style>
+            :host {
+                display: flex;
+            }
+
             .task__input {
                 width: var(--spacing-400);
             }

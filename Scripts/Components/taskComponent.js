@@ -1,28 +1,20 @@
-import { getTaskContent } from "../listLogic.js";
+import { getTaskContent, setChecked } from "../listLogic.js";
 
 class Task extends HTMLElement {
     content;
 
-    static observedAttributes = ["data-index", "checked"];
-
-    constructor() {
-        super();
-    }
-    
     connectedCallback() {
         const taskTemplate = document.getElementById("task");
         const taskContent = taskTemplate.content;
-        this.attachShadow({mode: 'open'}).appendChild(taskContent.cloneNode(true));
+        this.attachShadow({ mode: 'open' }).appendChild(taskContent.cloneNode(true));
 
-        this.renderData();
+        getTaskContent(parseInt(this.dataset.id), this);
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === "data-index" && oldValue === null) {
-            this.content = getTaskContent(newValue);
-        }
+    setContent(data) {
+        this.content = data;
 
-        if (name === "checked") this.content.checked = this.hasAttribute("checked");
+        this.renderData();
     }
 
     renderData() {
@@ -37,7 +29,7 @@ class Task extends HTMLElement {
         const checkbox = this.shadowRoot.querySelector(".task__input");
         checkbox.addEventListener("change", () => this.toggleChecked());
 
-        if(this.content.checked) { 
+        if (this.content.checked) {
             checkbox.checked = true;
             this.toggleChecked();
         }
@@ -45,13 +37,15 @@ class Task extends HTMLElement {
 
     toggleChecked() {
         this.toggleAttribute("checked");
+        this.content.checked = this.hasAttribute("checked");
 
         const input = this.shadowRoot.querySelector(".task__input");
 
         if (this.hasAttribute("checked")) input.ariaLabel = "Uncheck task";
         else input.ariaLabel = "Check task";
-    }
 
+        setChecked(this.content.id, this.content.checked);
+    }
 }
 
 customElements.define("task-node", Task);

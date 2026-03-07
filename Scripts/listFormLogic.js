@@ -1,7 +1,7 @@
-import { newTask } from './listLogic.js';
+import { newTask, populateLocalStorage } from './listLogic.js';
 
-const startDialog = function() {
-    dialog.showModal(); 
+const startDialog = function () {
+    dialog.showModal();
 }
 
 const dialog = document.getElementById("task-dialog");
@@ -12,7 +12,7 @@ addTaskButton.addEventListener("click", startDialog);
 const closeButton = document.querySelector(".dialog__close");
 closeButton.addEventListener("click", () => dialog.close());
 
-const dialogSubmit = function(e) {
+const dialogSubmit = function (e) {
     e.preventDefault();
 
     const formData = new FormData(e.target);
