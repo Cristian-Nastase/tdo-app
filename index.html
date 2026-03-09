@@ -14,10 +14,14 @@
 <body>
     <header>
         <nav class="nav">
-            <p class="home"><a href="#main">Home</a></p>
+            <ul class="nav__links">
+                <li class="nav__link nav__link--home"><a href="#main">Home</a></li>
+                <li class="nav__link nav__link--support"><a href="">Support</a></li>
+                <li class="nav__link nav__link--contact"><a href="">Contact</a></li>
+            </ul>
         </nav>
     </header>
-
+    <img src="Assets/Images/p-svg.png" alt="svg" style="position: absolute; top: 0; left: 0; z-index: -100;">
     <main id="main">
         <section class="list">
             <h1 class="list__title">Title</h1>
@@ -56,6 +60,8 @@
         <style>
             :host {
                 display: flex;
+                gap: var(--spacing-200);
+                color: var(--text-color);
             }
 
             .task__input {

@@ -1,4 +1,4 @@
-import { newTask, populateLocalStorage } from './listLogic.js';
+import { newTask } from './listLogic.js';
 
 const startDialog = function () {
     dialog.showModal();

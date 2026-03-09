@@ -1,5 +1,5 @@
 const createID = function() {
-    return Math.floor(Math.random() * maxTasks);
+    return Math.ceil(Math.random() * maxTasks);
 };
 
 export const newTask = function (data) {
@@ -33,7 +33,6 @@ const loadTask = function(taskData) {
 }
 
 const loadList = function () {
-    console.log(listMap);
     const listDataJSON = window.localStorage.getItem("list-data") ?? undefined;
     
     if (!listDataJSON) {
@@ -67,10 +66,11 @@ export const populateLocalStorage = function () {
 
     const listDataJSON = JSON.stringify(listArr);
     window.localStorage.setItem("list-data", listDataJSON);
-    console.log(listMap);
 }
 
 export const setChecked = function (id, value) {
+    if(state.loading) return;
+    
     listMap.get(id).checked = value;
     populateLocalStorage();
 }
