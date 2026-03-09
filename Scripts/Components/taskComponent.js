@@ -13,6 +13,7 @@ class Task extends HTMLElement {
 
     setContent(data) {
         this.content = data;
+        console.log(this.content.id);
 
         this.renderData();
     }

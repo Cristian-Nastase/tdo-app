@@ -1,27 +1,41 @@
+const createID = function() {
+    return Math.floor(Math.random() * maxTasks);
+};
+
 export const newTask = function (data) {
+    let id = createID();
+    
+    while(id in listMap.keys()) {
+        id = createID();
+    }
+
     const taskData = {
-        id: currentID,
+        id,
         checked: false,
         ...data,
         subtasks: []
     };
 
-    listMap.set(currentID, taskData);
+    listMap.set(id, taskData);
 
     const task = document.createElement("task-node");
-    task.dataset.id = currentID;
+    task.dataset.id = id;
     listContainer.append(task);
-
-    currentID++;
-
-    if (state.loading) return;
 
     populateLocalStorage();
 }
 
-const loadList = function () {
-    const listDataJSON = window.localStorage.getItem("list-data") ?? undefined;
+const loadTask = function(taskData) {
+    listMap.set(taskData.id, taskData);
+    const task = document.createElement("task-node");
+    task.dataset.id = taskData.id;
+    listContainer.append(task);
+}
 
+const loadList = function () {
+    console.log(listMap);
+    const listDataJSON = window.localStorage.getItem("list-data") ?? undefined;
+    
     if (!listDataJSON) {
         state.loading = false;
         return;
@@ -35,7 +49,7 @@ const loadList = function () {
     }
 
     for (const taskData of parseJSON) {
-        newTask(taskData);
+        loadTask(taskData);
     }
 
     state.loading = false;
@@ -53,6 +67,7 @@ export const populateLocalStorage = function () {
 
     const listDataJSON = JSON.stringify(listArr);
     window.localStorage.setItem("list-data", listDataJSON);
+    console.log(listMap);
 }
 
 export const setChecked = function (id, value) {
@@ -67,6 +82,6 @@ export const getTaskContent = function (id, object) {
 
 const state = { loading: true };
 const listMap = new Map();
-let currentID = 1;
+const maxTasks = 400;
 
 const listContainer = document.querySelector(".list__container");
