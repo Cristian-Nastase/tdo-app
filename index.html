@@ -38,7 +38,9 @@
     </section>
 
     <dialog id="task-dialog" class="dialog">
-        <button type="button" class="dialog__close" aria-label="Close dialog">X</button>
+        <button type="button" class="dialog__close" aria-label="Close dialog">
+            <img src="Assets/Images/x.svg" alt="close">
+        </button>
 
         <form id="task-form" class="form">
 
@@ -59,6 +61,14 @@
 
     <template id="task">
         <style>
+            input {
+                transition: outline 0.2s;
+            }
+
+            input:focus-visible {
+                outline: 4px solid var(--yellow-400);
+                outline-offset: 5px;
+            }
             :host {
                 position: relative;
                 height: fit-content;
@@ -72,6 +82,7 @@
                 height: fit-content;
                 min-height: fit-content;
                 display: flex;
+                align-items: center;
                 gap: var(--spacing-200);
                 background-color: var(--gray-900);
                 color: var(--text-color);
@@ -81,7 +92,7 @@
             }
 
             .task__layout:hover {
-                box-shadow: 0px 0px 10px 1px hsl( from var(--yellow-400) h s l / 0.7);
+                box-shadow: 0px 0px 8px 1px hsl( from var(--yellow-400) h s l / 0.7);
             }
 
             .task__input {
@@ -92,8 +103,44 @@
             .task__input:hover {
                 cursor: pointer;
             }
+            
+            input[type="checkbox"] {
+                display: grid;
+                place-items: center;
+                appearance: none;
+                width: 40px;
+                height: 40px;
+                background-color: var(--gray-200);
+                border-radius: 12px;
+                transition: background-color 0.4s;
+            }
 
-            .task__input:checked + .task__header {
+            input[type="checkbox"]:checked {
+                background-color: var(--yellow-400);
+            }
+
+            input[type="checkbox"]:checked::before {
+                content:'';
+                width: 100%;
+                aspect-ratio: 1/1;
+                background: url(Assets/Images/check.svg) center no-repeat;
+                animation: check-appear 0.2s;
+            }
+
+            @keyframes check-appear {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-200%);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0%);
+                }
+            }
+
+            .task__input:checked+.task__label {
+                color: var(--yellow-400);
                 text-decoration: line-through;
             }
 
@@ -101,7 +148,12 @@
                 max-width: clamp(5ch, 50%, 40ch);
                 word-wrap: break-word;
                 font-weight: 200;
-                font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+                font-size: var(--big-font);
+                transition: color 0.4s, text-decoration 0.4s;
+            }
+
+            .task__label:hover {
+                cursor: pointer;
             }
 
             .task__menu {
@@ -152,7 +204,7 @@
                 color: var(--gray-200);
                 font-family: "Lexend Deca";
                 font-weight: 300;
-                font-size: clamp(0.8rem, 0.4rem + 2vw, 1.2rem);
+                font-size: var(--xsmall-font);
                 transition: box-shadow 0.2s;
             }
 
@@ -171,12 +223,12 @@
             }
         </style>
         <div class="task__layout">
-            <input id="checkbox" type="checkbox" class="task__input" aria-label="Check task">
+            <input id="checkbox" role="checkbox" type="checkbox" class="task__input" aria-label="Check task">
             <label class="task__label" for="checkbox">
                 <slot name="title"></slot>
             </label>
         </div>
-        <div class="task__menu hidden">
+        <div class="task__menu hidden" aria-expanded="false">
             <button class="task__button task__button--remove" type="button" aria-label="Delete task">
                 <img class="task__icon" src="Assets/Images/trash.svg" alt="remove" />
                 <p class="task__option">Remove</p>

@@ -5,7 +5,7 @@ const createID = function() {
 export const newTask = function (data) {
     let id = createID();
     
-    while(id in listMap.keys()) {
+    while(listMap.has(id)) {
         id = createID();
     }
 

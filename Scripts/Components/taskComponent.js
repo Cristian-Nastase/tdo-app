@@ -4,8 +4,7 @@ class Task extends HTMLElement {
 
     connectedCallback() {
         const taskTemplate = document.getElementById("task");
-        const taskContent = taskTemplate.content;
-        this.attachShadow({ mode: 'open' }).appendChild(taskContent.cloneNode(true));
+        this.attachShadow({ mode: 'open' }).appendChild(taskTemplate.content.cloneNode(true));
 
         getTaskContent(parseInt(this.dataset.id), this);
     }
@@ -33,7 +32,7 @@ class Task extends HTMLElement {
             this.toggleChecked();
         }
 
-        this.addEventListener("contextmenu", this.toggleSettings);
+        this.addEventListener("contextmenu", (e) => this.toggleSettings(e));
 
         const deleteTask = this.shadowRoot.querySelector(".task__button--remove");
         const id = this.content.id;
@@ -56,6 +55,7 @@ class Task extends HTMLElement {
         e.preventDefault();
         const menu = this.shadowRoot.querySelector(".task__menu");
         menu.classList.toggle("hidden");
+        menu.setAttribute("aria-expanded", menu.getAttribute("aria-expanded") === "true" ? "false" : "true");
     }
 }
 customElements.define("task-node", Task);
