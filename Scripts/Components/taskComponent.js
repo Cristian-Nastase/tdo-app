@@ -1,5 +1,4 @@
-import { getTaskContent, setChecked } from "../listLogic.js";
-
+import { getTaskContent, setChecked, removeTask } from "../listLogic.js";
 class Task extends HTMLElement {
     content;
 
@@ -33,6 +32,12 @@ class Task extends HTMLElement {
             checkbox.checked = true;
             this.toggleChecked();
         }
+
+        this.addEventListener("contextmenu", this.toggleSettings);
+
+        const deleteTask = this.shadowRoot.querySelector(".task__button--remove");
+        const id = this.content.id;
+        deleteTask.addEventListener("click", () => removeTask(id));
     }
 
     toggleChecked() {
@@ -46,6 +51,11 @@ class Task extends HTMLElement {
 
         setChecked(this.content.id, this.content.checked);
     }
-}
 
+    toggleSettings(e) {
+        e.preventDefault();
+        const menu = this.shadowRoot.querySelector(".task__menu");
+        menu.classList.toggle("hidden");
+    }
+}
 customElements.define("task-node", Task);

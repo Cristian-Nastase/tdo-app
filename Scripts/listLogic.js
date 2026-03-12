@@ -33,7 +33,7 @@ const loadTask = function(taskData) {
 }
 
 const loadList = function () {
-    const listDataJSON = window.localStorage.getItem("list-data") ?? undefined;
+    const listDataJSON = window.localStorage.getItem("list-data");
     
     if (!listDataJSON) {
         state.loading = false;
@@ -78,6 +78,13 @@ export const setChecked = function (id, value) {
 export const getTaskContent = function (id, object) {
     const content = listMap.get(id);
     object.setContent(content);
+}
+
+export const removeTask = function (id) {
+    listMap.delete(id);
+    populateLocalStorage();
+
+    listContainer.querySelector(`task-node[data-id="${id}"]`).remove();
 }
 
 const state = { loading: true };

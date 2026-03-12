@@ -21,7 +21,6 @@
             </ul>
         </nav>
     </header>
-    <!-- <img src="Assets/Images/p-svg.png" alt="svg" style="position: absolute; top: 0; left: 0; z-index: -100;"> -->
     <main id="main">
         <section class="list">
             <div class="list__wrapper">
@@ -61,6 +60,15 @@
     <template id="task">
         <style>
             :host {
+                position: relative;
+                height: fit-content;
+                min-height: fit-content;
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-100);
+            }
+
+            .task__layout {
                 height: fit-content;
                 min-height: fit-content;
                 display: flex;
@@ -68,7 +76,12 @@
                 background-color: var(--gray-900);
                 color: var(--text-color);
                 border-radius: 20px;
-                padding: 0 var(--spacing-200);
+                padding: var(--spacing-100) var(--spacing-200);
+                transition: box-shadow 0.2s;
+            }
+
+            .task__layout:hover {
+                box-shadow: 0px 0px 10px 1px hsl( from var(--yellow-400) h s l / 0.7);
             }
 
             .task__input {
@@ -84,16 +97,91 @@
                 text-decoration: line-through;
             }
 
-            .task__header {
+            .task__label {
                 max-width: clamp(5ch, 50%, 40ch);
                 word-wrap: break-word;
                 font-weight: 200;
+                font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+            }
+
+            .task__menu {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                animation: appear-accordion 0.2s;
+                transform-origin: top center;
+            }
+
+            .task__menu.hidden {
+                animation: disappear-accordion 0.2s;
+            }
+
+            @keyframes appear-accordion {
+                0% {
+                    transform: scaleY(0);
+                }
+
+                100% { 
+                    transform: scaleY(1);
+                }
+            }
+
+            @keyframes disappear-accordion {
+                0% {
+                    display: block;
+                    transform: scaleY(1);
+                }
+                
+                100% { 
+                    transform: scaleY(0);
+                }
+            }
+
+            .task__button {
+                display: flex;
+                flex-direction: row;
+                flex: 1;
+
+                gap: var(--spacing-200);
+                padding: 0 var(--spacing-200);
+                margin-inline-start: var(--spacing-200);
+                border-width: 0px;
+                border-color: var(--gray-200);
+                border-radius: 20px;
+                background-color: var(--gray-900);
+                color: var(--gray-200);
+                font-family: "Lexend Deca";
+                font-weight: 300;
+                font-size: clamp(0.8rem, 0.4rem + 2vw, 1.2rem);
+                transition: box-shadow 0.2s;
+            }
+
+            .task__button:hover {
+                box-shadow: 0px 0px 10px 1px hsl( from var(--yellow-400) h s l / 0.7);
+            }
+
+            .task__icon {
+                background: transparent;
+                width: 32px;
+                aspect-ratio: 1/1;
+            }
+
+            .hidden {
+                display: none;
             }
         </style>
-        <input type="checkbox" class="task__input" aria-label="Check task">
-        <h2 class="task__header">
-            <slot name="title"></slot>
-        </h2>
+        <div class="task__layout">
+            <input id="checkbox" type="checkbox" class="task__input" aria-label="Check task">
+            <label class="task__label" for="checkbox">
+                <slot name="title"></slot>
+            </label>
+        </div>
+        <div class="task__menu hidden">
+            <button class="task__button task__button--remove" type="button" aria-label="Delete task">
+                <img class="task__icon" src="Assets/Images/trash.svg" alt="remove" />
+                <p class="task__option">Remove</p>
+            </button>
+        </div>
     </template>
 </body>
 </html>
