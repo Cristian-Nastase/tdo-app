@@ -34,6 +34,9 @@ class Task extends HTMLElement {
 
         this.addEventListener("contextmenu", (e) => this.toggleSettings(e));
 
+        const settingsButton = this.shadowRoot.querySelector(".task__settings");
+        settingsButton.addEventListener("click", (e) => this.toggleSettings(e));
+
         const deleteTask = this.shadowRoot.querySelector(".task__button--remove");
         const id = this.content.id;
         deleteTask.addEventListener("click", () => removeTask(id));

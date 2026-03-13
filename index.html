@@ -69,6 +69,7 @@
                 outline: 4px solid var(--yellow-400);
                 outline-offset: 5px;
             }
+
             :host {
                 position: relative;
                 height: fit-content;
@@ -79,8 +80,6 @@
             }
 
             .task__layout {
-                height: fit-content;
-                min-height: fit-content;
                 display: flex;
                 align-items: center;
                 gap: var(--spacing-200);
@@ -91,8 +90,27 @@
                 transition: box-shadow 0.2s;
             }
 
+            .task__body {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-200);
+                padding: var(--spacing-100) var(--spacing-200);
+            }
+
+            
             .task__layout:hover {
                 box-shadow: 0px 0px 8px 1px hsl( from var(--yellow-400) h s l / 0.7);
+            }
+
+            .task__wrapper {
+                display: flex;
+                gap: var(--spacing-200);
+                align-items: center;
+            }
+
+            .task__wrapper:hover {
+                cursor: pointer;
             }
 
             .task__input {
@@ -139,20 +157,31 @@
                 }
             }
 
-            .task__input:checked+.task__label {
-                color: var(--yellow-400);
-                text-decoration: line-through;
-            }
-
             .task__label {
-                max-width: clamp(5ch, 50%, 40ch);
+                flex: 1;
+                max-width: clamp(5ch, 30vw, 30ch);
                 word-wrap: break-word;
                 font-weight: 200;
                 font-size: var(--big-font);
                 transition: color 0.4s, text-decoration 0.4s;
             }
 
-            .task__label:hover {
+            .task__input:checked + .task__label {
+                color: var(--yellow-400);
+                text-decoration: line-through;
+            }
+            
+            .task__settings {
+                justify-self: end;
+                width: 50px;
+                height: 50px;
+                display: grid;
+                place-items: center;
+                border: 0;
+                background-color: transparent;
+            }
+
+            .task__settings {
                 cursor: pointer;
             }
 
@@ -209,6 +238,7 @@
             }
 
             .task__button:hover {
+                cursor: pointer;
                 box-shadow: 0px 0px 10px 1px hsl( from var(--yellow-400) h s l / 0.7);
             }
 
@@ -223,10 +253,18 @@
             }
         </style>
         <div class="task__layout">
-            <input id="checkbox" role="checkbox" type="checkbox" class="task__input" aria-label="Check task">
-            <label class="task__label" for="checkbox">
-                <slot name="title"></slot>
-            </label>
+            <div class="task__body">
+                <label class="task__wrapper">
+                    <input role="checkbox" type="checkbox" class="task__input" aria-label="Check task">
+                    <span class="task__label">
+                        <slot class="task__label" name="title"></slot>
+                    </span>
+                </label>
+            </div>
+
+            <button class="task__settings" type="button" aria-label="Open settings">
+                <img src="Assets/Images/settings.svg" alt="settings">
+            </button>
         </div>
         <div class="task__menu hidden" aria-expanded="false">
             <button class="task__button task__button--remove" type="button" aria-label="Delete task">
