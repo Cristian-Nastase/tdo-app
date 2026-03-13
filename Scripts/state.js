@@ -14,9 +14,16 @@ const getStorageState = function () {
     const sessionState = JSON.parse(sessionStorage.getItem("state"));
     
     if(!sessionState)
-        return;
+        throw new Error("Fresh session");
     
     Object.assign(state, sessionState);
 }
 
-window.addEventListener("load", getStorageState);
+window.addEventListener("load", function() {
+    try {
+        getStorageState();
+    }
+    catch {
+        console.log("Welcome to TDO!");
+    }
+});

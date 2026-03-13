@@ -8,6 +8,7 @@
 
     <script src="Scripts/menuLogic.js" defer type="module"></script>
     <script src="Scripts/state.js" defer type="module"></script>
+    <script src="Scripts/menuFormLogic.js" defer type="module"></script>
 </head>
 <body>
     <a href="list.html">sa</a>
@@ -30,11 +31,22 @@
     <footer class="footer"></footer>
 
     <dialog id="dialog" class="dialog">
+        <button class="dialog__close">
+            <img src="Assets/Images/x.svg" alt="close">
+        </button>
         <form class="form">
-            <label class="form__label" for="">List name *</label>
-            <input autofocus name="list-name" class="form__input" type="text" required aria-label="Enter a name for the list" />
-            <span class="form__error">enter a name for the list</span>
-            <button type="submit" class="form__submit">Create a new list</button>
+            <label for="form-title" class="form__field">
+                <span class="form__label">Name *</span>
+                <input autofocus class="form__input" id="form-title" type="text" required name="title" autocomplete="off" placeholder="Enter a name.."/>
+                <span class="form__error">Enter a task name</span>
+            </label>
+
+            <label for="form-description" class="form__field">
+                <span class="form__label">Description</span>
+                <textarea id="form-description" class="form__textarea" placeholder="Enter a description.." name="description"></textarea>
+            </label>
+
+            <button type="submit" class="form__submit" aria-label="Create list">Create list</button>
         </form>
     </dialog>
 </body>
