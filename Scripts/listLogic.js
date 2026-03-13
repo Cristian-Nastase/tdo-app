@@ -1,3 +1,5 @@
+import { state } from './state.js';
+
 const createID = function() {
     return Math.ceil(Math.random() * maxTasks);
 };
@@ -87,7 +89,7 @@ export const removeTask = function (id) {
     listContainer.querySelector(`task-node[data-id="${id}"]`).remove();
 }
 
-const state = { loading: true };
+
 const listMap = new Map();
 const maxTasks = 400;
 

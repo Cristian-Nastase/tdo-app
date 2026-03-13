@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDO! - build it.</title>
+    <link rel="icon" type="image/x-icon" href="Assets/Images/icon.svg" />
+
+    <script src="Scripts/menuLogic.js" defer type="module"></script>
+    <script src="Scripts/state.js" defer type="module"></script>
+</head>
+<body>
+    <a href="list.html">sa</a>
+    <header class="banner">
+        <div class="banner__body"> 
+            <h1 class="banner__header">welcome to TDO!</h1>
+            <p class="banner__text">create a new list or open an existing one.</p>
+        </div>
+
+        <button class="banner__button">
+            <p class="banner__create">create a new task</p>
+        </button>
+    </header>
+    
+    <main>
+        <section class="lists__container">
+        </section>
+    </main>
+
+    <footer class="footer"></footer>
+
+    <dialog id="dialog" class="dialog">
+        <form class="form">
+            <label class="form__label" for="">List name *</label>
+            <input autofocus name="list-name" class="form__input" type="text" required aria-label="Enter a name for the list" />
+            <span class="form__error">enter a name for the list</span>
+            <button type="submit" class="form__submit">Create a new list</button>
+        </form>
+    </dialog>
+</body>
+</html>
