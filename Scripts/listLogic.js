@@ -1,5 +1,10 @@
 import { state, setStorageState } from './state.js';
 
+const listMap = new Map();
+const maxTasks = 400;
+
+const listContainer = document.querySelector(".list__container");
+
 const returnCurrentIndex = function () {
     return parseInt(state.currentList);
 }
@@ -89,11 +94,11 @@ const loadList = function () {
     }
     catch (error) {
         console.error(error);
-        location.assign("http://127.0.0.1:5500/menu.html")
+        location.assign("menu.html");
     }
 
     listTitle.innerText = listData.title;
-    listDescription.innerText = listData.description;
+    listDescription.innerText = listData.description || "No description";
 
     for (const taskData of listData.tasks) {
         newTask(taskData);
@@ -144,8 +149,3 @@ export const removeTask = function (id) {
 
     listContainer.querySelector(`task-node[data-id="${id}"]`).remove();
 }
-
-const listMap = new Map();
-const maxTasks = 400;
-
-const listContainer = document.querySelector(".list__container");

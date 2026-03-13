@@ -61,7 +61,7 @@ export const createList = function (title, description) {
 const enterList = function (e) {
     state.currentList = e.currentTarget.dataset.index;
     setStorageState();
-    location.assign("http://127.0.0.1:5500/list.html");
+    location.assign("list.html");
 }
 
 const loadMenu = function () {
