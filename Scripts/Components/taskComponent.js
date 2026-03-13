@@ -9,7 +9,8 @@ class Task extends HTMLElement {
         try {
             getTaskContent(parseInt(this.dataset.id), this);
         }
-        catch {
+        catch(error) {
+            console.error(error);
             this.remove();
         }
     }

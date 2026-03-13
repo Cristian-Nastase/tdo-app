@@ -29,8 +29,9 @@ const returnCurrentListData = function () {
     try {
         data = returnListsData();
     }
-    catch {
-        throw new Error("Current list does not exist, abort immediately");
+    catch(error) {
+        console.error(error);
+        throw new Error("Error while parsing localStorage data, abort immediately");
     }
 
     const currentListData = data[returnCurrentIndex()];

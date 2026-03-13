@@ -76,8 +76,8 @@ const loadMenu = function () {
     try {
         extractLocalStorage();
     }
-    catch {
-        console.log("No data found, will load an empty menu.");
+    catch(error) {
+        console.warn("No data found, will load an empty menu.");
         state.loading = false;
         setStorageState();
     }
