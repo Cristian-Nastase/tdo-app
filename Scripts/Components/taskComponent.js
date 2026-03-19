@@ -6,7 +6,13 @@ class Task extends HTMLElement {
         const taskTemplate = document.getElementById("task");
         this.attachShadow({ mode: 'open' }).appendChild(taskTemplate.content.cloneNode(true));
 
-        getTaskContent(parseInt(this.dataset.id), this);
+        try {
+            getTaskContent(parseInt(this.dataset.id), this);
+        }
+        catch(error) {
+            console.error(error);
+            this.remove();
+        }
     }
 
     setContent(data) {
