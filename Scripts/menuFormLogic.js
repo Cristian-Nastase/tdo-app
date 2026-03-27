@@ -1,6 +1,7 @@
 import { createList } from "./menuLogic.js";
 
 const dialog = document.querySelector(".dialog");
+const form = document.querySelector(".form");
 const closeDialogButton = document.querySelector(".dialog__close");
 
 export const startDialog = function () {
@@ -19,6 +20,8 @@ const submitDialog = function (e) {
     
     createList(data.title, data.description);
     closeDialog();
+
+    form.reset();
 }
 
 closeDialogButton.addEventListener("click", closeDialog);

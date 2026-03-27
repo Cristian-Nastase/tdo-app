@@ -5,41 +5,22 @@ const maxTasks = 400;
 
 const listContainer = document.querySelector(".list__container");
 
-const returnCurrentIndex = function () {
+const returnCurrentId = function () {
     return parseInt(state.currentList);
 }
 
-const returnListsData = function () {
-    const lists = localStorage.getItem("lists-data");
-
-    if (!lists)
-        throw new Error("LocalStorage does not have past data set");
-
-    const data = JSON.parse(lists);
+const returnListData = function () {
+    const data = localStorage.getItem(`list-${returnCurrentId()}`);
 
     if (!data)
+        throw new Error("LocalStorage does not have past data set");
+
+    const list = JSON.parse(data);
+
+    if (!list)
         throw new Error("LocalStorage does not contain any data");
 
-    return data;
-}
-
-const returnCurrentListData = function () {
-    let data;
-
-    try {
-        data = returnListsData();
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Error while parsing localStorage data, abort immediately");
-    }
-
-    const currentListData = data[returnCurrentIndex()];
-
-    if (!currentListData)
-        throw new Error(`Current list index (${returnCurrentIndex}) does not exist`);
-
-    return currentListData;
+    return list;
 }
 
 const createID = function () {
@@ -91,11 +72,12 @@ const loadList = function () {
     let listData;
 
     try {
-        listData = returnCurrentListData();
+        listData = returnListData();
     }
     catch (error) {
         console.error(error);
-        location.assign("menu.html");
+        location.assign("index.html");
+        return;
     }
 
     listTitle.innerText = listData.title;
@@ -111,7 +93,7 @@ const loadList = function () {
 window.addEventListener("load", loadList);
 
 const populateLocalStorage = function () {
-    const currentListData = returnCurrentListData();
+    const currentListData = returnListData();
     const taskArr = [];
 
     for (const [key, value] of listMap) {
@@ -121,11 +103,8 @@ const populateLocalStorage = function () {
 
     currentListData.tasks = taskArr;
 
-    const listsLocalData = returnListsData();
-    listsLocalData[returnCurrentIndex()] = currentListData;
-
-    const listsJSON = JSON.stringify(listsLocalData);
-    localStorage.setItem("lists-data", listsJSON);
+    const listJSON = JSON.stringify(currentListData);
+    localStorage.setItem(`list-${returnCurrentId()}`, listJSON);
 }
 
 export const setChecked = function (id, value) {
