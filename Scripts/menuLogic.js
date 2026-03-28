@@ -3,7 +3,9 @@ import { startDialog } from "./menuFormLogic.js"
 
 const lists = new Map();
 const maxLists = 20;
-const usedIds = [];
+const usedIds = new Set();
+
+const hammerButton = document.querySelector(".hammer");
 
 const generateListId = function() {
     if(lists.size === maxLists)
@@ -11,11 +13,11 @@ const generateListId = function() {
 
     let id = Math.floor(Math.random() * maxLists);
     
-    while(usedIds.includes(id)) {
+    while(usedIds.has(id)) {
         id = Math.floor(Math.random() * maxLists);
     }
 
-    usedIds.push(id);
+    usedIds.add(id);
     return id;
 };
 
@@ -32,7 +34,9 @@ const saveIds = function() {
     if(!usedIds)
         return;
 
-    const data = JSON.stringify(usedIds);
+    const arr = Array.from(usedIds.values());
+
+    const data = JSON.stringify(arr);
     localStorage.setItem("used-ids", data);
 }
 
@@ -72,7 +76,8 @@ export const createList = function (title, description, listId = null) {
 
     lists.set(id, list);
 
-    const listElement = document.createElement("div");
+    const listElement = document.createElement("button");
+    listElement.type = "button";
     listElement.classList.add("list");
     listElement.dataset.index = id;
 
@@ -80,7 +85,7 @@ export const createList = function (title, description, listId = null) {
     paragraph.innerText = title;
 
     listElement.appendChild(paragraph);
-    listsContainer.appendChild(listElement);
+    listsContainer.prepend(listElement);
 
     listElement.addEventListener("click", enterList);
 
@@ -90,10 +95,30 @@ export const createList = function (title, description, listId = null) {
     }
 }
 
+const removeList = function(e) {
+    const id = parseInt(e.currentTarget.dataset.index);
+
+    lists.delete(id);
+    usedIds.delete(id);
+    
+    e.currentTarget.remove();
+    localStorage.removeItem(`list-${id}`);
+    saveIds();
+}
+
 const enterList = function (e) {
+    if(hammerButton.hasAttribute("active")) {
+        removeList(e);
+        return;
+    }
+
     state.currentList = e.currentTarget.dataset.index;
     setStorageState();
     location.assign("list.html");
+}
+
+const toggleHammer = function() {
+    hammerButton.toggleAttribute("active");
 }
 
 const loadMenu = function () {
@@ -102,12 +127,17 @@ const loadMenu = function () {
     state.currentList = null;
     setStorageState();
 
-    const createButton = document.querySelector(".banner__button");
-    createButton.addEventListener("click", startDialog);
+    const createButtonBanner = document.querySelector(".banner__button");
+    createButtonBanner.addEventListener("click", startDialog);
+
+    const createButtonContainer = document.querySelector(".list--create");
+    createButtonContainer.addEventListener("click", startDialog);
+    
+    hammerButton.addEventListener("click", toggleHammer);
 
     try {
         const ids = extractIds();
-        usedIds.push(...ids);
+        ids.forEach(usedIds.add, usedIds);
 
         for(const id of ids) {
             extractLocalStorage(id);

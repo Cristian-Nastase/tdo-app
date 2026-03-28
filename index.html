@@ -5,16 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDO! - build it.</title>
     <link rel="icon" type="image/x-icon" href="Assets/Images/icon.svg" />
+    <link rel="stylesheet" href="menu.css"/>
+
 
     <script src="Scripts/menuLogic.js" type="module"></script>
     <script src="Scripts/state.js" type="module"></script>
     <script src="Scripts/menuFormLogic.js" type="module"></script>
 </head>
 <body>
-    <a href="list.html">sa</a>
     <header class="banner">
+        <div class="banner__nav">
+            <div class="banner__logo">
+                <img class="banner__icon" src="Assets/Images/icon-transparent.svg" alt="icon" loading="lazy"/>
+                <p class="banner__name">TDO!</p>
+            </div>
+            
+            <div class="spacer"></div>
+
+            <nav class="nav">
+                <ul class="nav__links">
+                    <li class="nav__link nav__link--home"><a href="index.html">Home</a></li>
+                    <li class="nav__link nav__link--support"><a href="">Support</a></li>
+                    <li class="nav__link nav__link--contact"><a href="">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
         <div class="banner__body"> 
-            <h1 class="banner__header">welcome to TDO!</h1>
+            <h1 class="banner__header">welcome to <span class="banner__header__span">TDO!</span></h1>
             <p class="banner__text">create a new list or open an existing one.</p>
         </div>
 
@@ -24,7 +42,19 @@
     </header>
     
     <main>
-        <section class="lists__container">
+        
+        <section class="lists">
+            <header class="lists__header">
+                <h2 class="lists__title">your lists</h2>
+                <div class="spacer"></div>
+                <button class="hammer" type="button">
+                    <img class="hammer__icon" src="Assets/Images/hammer.svg" alt="hammer" loading="lazy">
+                    <p class="hammer__text">destroy</p>
+                </button>
+            </header>
+            <div class="lists__container">
+                <button class="list list--create" type="button">+</button>
+            </div>
         </section>
     </main>
 
@@ -32,7 +62,7 @@
 
     <dialog id="dialog" class="dialog">
         <button class="dialog__close">
-            <img src="Assets/Images/x.svg" alt="close">
+            <img src="Assets/Images/x.svg" alt="close" loading="lazy">
         </button>
         <form class="form">
             <label for="form-title" class="form__field">
