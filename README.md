@@ -1,18 +1,50 @@
-# TDO! (CLI To-do app)
+<p align="center">
+    <img width="300" src="Assets/Images/icon-transparent.svg"/>
+</p>
 
-## A CLI based To-do app made for nerds. Write fast, plan faster.
+<h1 align="center">TDO! (CLI To-do app)</h1>
+<p align="center" size="32">
+    A CLI based To-do app made for nerds. Write fast, plan faster.
+    <br>
+    <a style="font-size:20px; color: #e2b714" href="https://cristian-nastase.github.io/tdo-app/">Live demo - hosted on GitHub Pages</a>
+</p>
 
-### Scope:
+<p align="center">
+    <img width="32" src="Assets/Images/html-readme.svg" alt="html" />
+    <img width="32" src="Assets/Images/css-readme.svg" alt="css"/>
+    <img width="32" src="Assets/Images/js-readme.svg" alt="js"/>
+</p>
 
-- An usable and working To-do app for people who like typing, but also for normal people
-- It needs to be fast and smooth
+<h2 style="color:#e2b714">Description</h2>
 
-### Commands:
+A to-do app meant to look and feel minimalistic, with the developer experience in mind. Use your keyboard just as you would in a terminal or command-line based program to control the app.
+<br>
 
-- mklist - Creates a list
-- cl - Change to current list
-- add - Add a task ⇒ This prompts to a task maker, where you can also add subtasks
-- ls - List the tasks / lists (depends on the context) with an ID
-- select {ID} - This selects the task with ID and prompts the task edit ( this is also the task maker, just filled with data )
-- rm {ID} - Removes a task
-- rmls {ID} - Removes a list
+<img align="center" src="Assets/Images/demo.png">
+
+<h2 style="color: #e2b714">Features</h2>
+<ul style="font-size: 16px">
+    <li>Minimalist and elegant design inspired by <a style="color: #e2b714" href="https://monkeytype.com/">MonkeyType</a></li>
+    <li>Create and delete lists</li>
+    <li>Manage tasks</li>
+    <li>Drag & drop (IN PROGRESS)</li>
+    <li>Command line to control the interface (IN PROGRESS)</li>
+</ul>
+
+<h2 style="color: #e2b714">Motivations</h2>
+I love my keyboard, I use it <b>a lot</b>. But when I'm working, I often have to take one hand off my keyboard to control my mouse because other apps are not accessible to keyboard users, which really annoys me.
+<br><br>
+This is really the motive behind this project. <b style="color: #e2b714">TDO!</b> is about making productivity tools accessible for nerds and people who really like to type.
+
+<h3>Dev related things</h3>
+The project encapsulates my skills obtained throughout my Front-end learning journey. I wanted to use only browser-standard features, since I focused only on the vanilla-side of things.
+<br><br>
+This was also my first time using Web-components and I have enjoyed working with them. Inspired or not, the first thought that came across my mind when approaching this project, was to reuse and separate the task behaviour from the project, to make it alive on its own, as I was thinking this was more appropriate and posed an interesting challenge.
+
+<h2 style="color: #e2b714">Author</h2>
+<b style="font-size: 20px">Cristian Năstase</b>
+<br>
+<ul style="font-size:16px">
+    <li><a style="color: #e2b714" href="https://github.com/Cristian-Nastase">Github</a></li>
+    <li><a style="color: #e2b714" href="https://www.linkedin.com/in/cristian-florin-nastase-383a1b397/">Linkedin</a></li>
+</ul>
