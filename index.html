@@ -7,6 +7,33 @@
     <link rel="icon" type="image/x-icon" href="Assets/Images/icon.svg" />
     <link rel="stylesheet" href="menu.css"/>
 
+    <meta name="title" content="TDO! - a minimalist keyboard-first to-do app">
+    <meta name="author" content="Cristian Nastase">
+    <meta name="description" content="A to-do app with keyboard users in mind. Complete your goals using TDO!.">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cristian-nastase.github.io/tdo-app/">
+    <meta property="og:title" content="TDO! - a minimalist keyboard-first to-do app">
+    <meta property="og:description" content="A to-do app with keyboard users in mind. Complete your goals using TDO!.">
+    
+    <meta property="og:image" content="https://cristian-nastase.github.io/tdo-app/Assets/Images/icon.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Keyboard logo">
+
+    <meta property="og:site_name" content="github.io/tdo-app">
+    <meta property="og:locale" content="en_US">
+
+    <meta property="twitter:card" content="Keyboard logo">
+    <meta property="twitter:url" content="https://cristian-nastase.github.io/tdo-app/">
+    <meta property="twitter:title" content="TDO! - a minimalist keyboard-first to-do app">
+
+    <meta property="twitter:image" content="https://cristian-nastase.github.io/tdo-app/Assets/Images/icon.svg">
+    <meta property="twitter:image:alt" content="Keyboard logo">
+
+    <link rel="canonical" href="https://cristian-nastase.github.io/tdo-app/">
 
     <script src="Scripts/menuLogic.js" type="module"></script>
     <script src="Scripts/state.js" type="module"></script>
@@ -16,17 +43,17 @@
     <header class="banner">
         <div class="banner__nav">
             <div class="banner__logo">
-                <img class="banner__icon" src="Assets/Images/icon-transparent.svg" alt="icon" loading="lazy"/>
+                <img class="banner__icon" src="Assets/Images/icon-transparent.svg" alt="icon" loading="eager" width="32" height="32"/>
                 <p class="banner__name">TDO!</p>
             </div>
             
             <div class="spacer"></div>
 
-            <nav class="nav">
+            <nav class="nav" aria-label="">
                 <ul class="nav__links">
                     <li class="nav__link nav__link--home"><a href="index.html">Home</a></li>
-                    <li class="nav__link nav__link--support"><a href="">Support</a></li>
-                    <li class="nav__link nav__link--contact"><a href="">Contact</a></li>
+                    <li class="nav__link nav__link--support"><a href="https://github.com/Cristian-Nastase/tdo-app">Support</a></li>
+                    <li class="nav__link nav__link--contact"><a href="https://github.com/Cristian-Nastase/tdo-app">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -36,39 +63,37 @@
             <p class="banner__text">create a new list or open an existing one.</p>
         </div>
 
-        <button class="banner__button">
-            <p class="banner__create">create a new list</p>
+        <button type="button" class="banner__button" aria-label="Create a new list">
+            <span class="banner__create">create a new list</span>
         </button>
     </header>
     
     <main>
-        
-        <section class="lists">
-            <header class="lists__header">
-                <h2 class="lists__title">your lists</h2>
+        <section class="lists" aria-labelledby="lists-title">
+            <div class="lists__header">
+                <h2 id="lists-title" class="lists__title">your lists</h2>
                 <div class="spacer"></div>
-                <button class="hammer" type="button">
-                    <img class="hammer__icon" src="Assets/Images/hammer.svg" alt="hammer" loading="lazy">
-                    <p class="hammer__text">destroy</p>
+                <button class="hammer" type="button" aria-label="Toggle delete mode" aria-pressed="false">
+                    <img class="hammer__icon" src="Assets/Images/hammer.svg" alt="hammer" loading="lazy" width="32" height="32">
+                    <span class="hammer__text">destroy</span>
                 </button>
-            </header>
+            </div>
+
             <div class="lists__container">
-                <button class="list list--create" type="button">+</button>
+                <button class="list list--create" type="button" aria-label="Add new list">+</button>
             </div>
         </section>
     </main>
 
-    <footer class="footer"></footer>
-
     <dialog id="dialog" class="dialog">
-        <button class="dialog__close">
-            <img src="Assets/Images/x.svg" alt="close" loading="lazy">
+        <button class="dialog__close" type="button" aria-label="Close the dialog">
+            <img src="Assets/Images/x.svg" alt="close" loading="lazy" width="16" height="32">
         </button>
         <form class="form">
             <label for="form-title" class="form__field">
                 <span class="form__label">Name *</span>
-                <input autofocus class="form__input" id="form-title" type="text" required name="title" autocomplete="off" placeholder="Enter a name.."/>
-                <span class="form__error">Enter a task name</span>
+                <input autofocus class="form__input" id="form-title" type="text" required name="title" autocomplete="off" aria-describedby="title-error" placeholder="Enter a name.."/>
+                <span class="form__error" id="title-error">Enter a task name</span>
             </label>
 
             <label for="form-description" class="form__field">

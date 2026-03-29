@@ -128,6 +128,9 @@ const enterList = function (e) {
 const toggleHammer = function() {
     hammerButton.toggleAttribute("active");
     listsSection.toggleAttribute("hammer");
+
+    const ariaPressed = hammerButton.hasAttribute("active") ? "true" : "false"; 
+    hammerButton.setAttribute("aria-pressed", ariaPressed);
 }
 
 const loadMenu = function () {
