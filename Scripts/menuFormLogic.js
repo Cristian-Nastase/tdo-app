@@ -18,7 +18,7 @@ const submitDialog = function (e) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     
-    createList(data.title, data.description);
+    createList(data.title.trim(), data.description.trim());
     closeDialog();
 
     form.reset();

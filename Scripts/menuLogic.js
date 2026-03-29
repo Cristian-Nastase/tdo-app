@@ -6,6 +6,7 @@ const maxLists = 20;
 const usedIds = new Set();
 
 const hammerButton = document.querySelector(".hammer");
+const listsSection = document.querySelector(".lists");
 
 const generateListId = function() {
     if(lists.size === maxLists)
@@ -96,14 +97,21 @@ export const createList = function (title, description, listId = null) {
 }
 
 const removeList = function(e) {
-    const id = parseInt(e.currentTarget.dataset.index);
+    const element = e.currentTarget;
+
+    const id = parseInt(element.dataset.index);
+
+    element.toggleAttribute("delete");
 
     lists.delete(id);
     usedIds.delete(id);
-    
-    e.currentTarget.remove();
+
     localStorage.removeItem(`list-${id}`);
     saveIds();
+    
+    setTimeout(() => {
+        element.remove();
+    } , 200);
 }
 
 const enterList = function (e) {
@@ -119,6 +127,7 @@ const enterList = function (e) {
 
 const toggleHammer = function() {
     hammerButton.toggleAttribute("active");
+    listsSection.toggleAttribute("hammer");
 }
 
 const loadMenu = function () {
@@ -134,6 +143,8 @@ const loadMenu = function () {
     createButtonContainer.addEventListener("click", startDialog);
     
     hammerButton.addEventListener("click", toggleHammer);
+    hammerButton.removeAttribute("active");
+    listsContainer.removeAttribute("hammer");
 
     try {
         const ids = extractIds();
