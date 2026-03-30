@@ -1,0 +1,10 @@
+{
+  "name": "tdo-app",
+  "scripts": {
+    "dev": "sass --watch Styles/pages:dist --style=compressed",
+    "build": "sass Styles/pages:dist --style=compressed --no-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.98.0"
+  }
+}
