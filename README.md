@@ -11,7 +11,7 @@
 
 <p align="center">
     <img width="32" src="Assets/Images/html-readme.svg" alt="html" />
-    <img width="32" src="Assets/Images/css-readme.svg" alt="css"/>
+    <img width="32" src="Assets/Images/scss-readme.svg" alt="css"/>
     <img width="32" src="Assets/Images/js-readme.svg" alt="js"/>
 </p>
 
