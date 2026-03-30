@@ -1,0 +1,115 @@
+.banner {
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+    row-gap: var(--spacing-800);
+
+    &__nav {
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: center;
+        
+        gap:var(--spacing-200);
+        
+        padding: var(--spacing-100) var(--spacing-400);
+        
+        background-color: var(--gray-900);
+        border-radius: 10px;
+        animation: left-appear var(--nav-appear) ease-out var(--nav-delay);
+    }
+
+    &__logo {
+        display: flex;
+        
+        justify-self: start;
+        align-items: center;
+        
+
+        gap:var(--spacing-100);
+        
+        color: var(--white);
+
+        border-radius: 10px;
+
+        padding: var(--spacing-100);
+
+        transition: filter 0.2s;
+        
+        &:hover {
+            filter: brightness(0.8);
+            cursor: pointer;
+        }
+    }
+
+    &__icon {
+        width: 32px;
+        aspect-ratio: 1/1;
+    }
+
+    &__name {
+        font-size: var(--medium-font);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: var(--spacing-200);
+    }
+
+    &__header {
+        font-size: var(--big-font);
+        color: var(--white);
+        font-weight: 300;
+    }
+
+    &__header__span {
+        color: var(--yellow-400);
+        font-weight: 400;
+        font-size: var(--xbig-font);
+        transition: filter 0.2s;
+        
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.8);
+        }
+    }
+
+
+    &__text {
+        color: var(--gray-200);
+        font-weight: 300;
+        font-size: var(--xsmall-font);
+    }
+
+    &__button {
+        justify-self: center;
+        
+        padding: var(--spacing-200) var(--spacing-400);
+
+        background-color: var(--yellow-400);
+        border: 1px solid transparent;
+
+        border-radius: 10px;
+
+        color: var(--gray-900);
+
+        transition: box-shadow 0.2s, border-color 0.2s, color 0.2s, background-color 0.2s;
+
+        &:hover {
+            color: var(--yellow-400);
+            background-color: transparent;
+            cursor: pointer;
+            border-color: var(--yellow-400);
+            box-shadow: 1px 1px 20px 1px hsl(from var(--yellow-400) h s l / 0.4);
+        }
+    }
+
+    &__create {
+        font-size: var(--small-font);
+    }
+}

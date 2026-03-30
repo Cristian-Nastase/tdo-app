@@ -1,0 +1,88 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-400);
+    
+    &__field {
+        display: grid;
+        gap: var(--spacing-200);
+    }
+    
+    &__label {
+        text-transform: lowercase;
+        color: var(--gray-200);
+        font-weight: 200;
+        font-size: var(--small-font);
+    }
+    
+    &__input {
+        font-family: 'Lexend Deca';
+        font-weight: 200;
+        background-color: var(--black);
+        border: 0;
+        border-radius: 20px;
+        padding: var(--spacing-100) var(--spacing-200);
+        color: var(--gray-200);
+        font-size: var(--medium-font);
+        transition: outline 0.2s;
+
+        &:focus {
+            outline: 2px solid var(--yellow-400);
+        }
+
+        &:user-invalid {
+            outline: 1px solid red;
+        }
+
+        &:user-invalid+.form__error {
+            opacity: 1;
+        }
+    }
+
+    
+    &__error {
+        justify-self: end;
+        text-transform: lowercase;
+        opacity: 0;
+        color: var(--red-500);
+        font-weight: 200;
+        transition: opacity 0.3s;
+    }
+    
+    &__textarea {
+        border-radius: 20px 20px 0px 20px;
+        background: var(--black);
+        border: 0;
+        resize: vertical;
+        min-height: 7rem;
+        max-height: 15rem;
+        color: var(--white);
+        font-family: 'Lexend Deca';
+        font-weight: 200;
+        padding: var(--spacing-200);
+
+        &:focus {
+            outline: 2px solid var(--yellow-400);
+        }
+    }
+    
+    &__submit {
+        align-self: center;
+        padding: var(--spacing-200) var(--spacing-800);
+        min-width: 18rem;
+        border: 0;
+        border-radius: 20px;
+        font-size: var(--medium-font);
+        font-family: "Lexend Deca";
+        font-weight: 300;
+        text-transform: lowercase;
+        color: var(--yellow-400);
+        background-color: transparent;
+        transition: box-shadow 0.4s, background-color 0.4s, color 0.4s;
+        box-shadow: 0px 1px 10px 1px hsl(from var(--yellow-500) h s l / 0.5);
+        
+        &__submit:hover {
+            cursor: pointer;
+        }
+    }
+}

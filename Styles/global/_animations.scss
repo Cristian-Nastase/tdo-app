@@ -1,0 +1,86 @@
+:root {
+    --nav-appear: 0.4s;
+    --nav-delay: 0s;
+
+    --others-appear:  calc(var(--nav-appear) + var(--nav-delay) + 0.4s);
+}
+
+@keyframes others-appear {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    25% {
+        transform: rotateZ(var(--motion));
+    }
+
+    50% {
+        transform: rotateZ(calc(-1 * var(--motion)));
+    }
+
+    75% {
+        transform: rotateZ(var(--motion));
+    }
+
+    100%{
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes delete-animation {
+    0% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+@keyframes dialog-close-return {
+    0% {
+        --rotate: 90deg;
+    }
+
+    100% {
+        --rotate: 0deg;
+    }
+}
+
+@keyframes dialog-close-hover {
+    0% {
+        --rotate: 0deg;
+    }
+
+    100% {
+        --rotate: 90deg;
+    }
+}
+
+@keyframes item-appear {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}

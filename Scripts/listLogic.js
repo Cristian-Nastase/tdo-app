@@ -76,7 +76,7 @@ const loadList = function () {
     }
     catch (error) {
         console.error(error);
-        location.assign("index.html");
+        location.assign("../index.html");
         return;
     }
 

@@ -1,0 +1,43 @@
+.nav {
+    display: grid;
+    grid-auto-flow: column;
+    place-items:start;
+    --nav-underline-color: var(--yellow-400);
+    text-transform: lowercase;
+    
+    &__links {
+        margin-inline-start: var(--spacing-200);
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-600);
+        list-style: none;
+        color: var(--white);
+    }
+    
+    &__link {
+        display: flex;
+        flex-direction: column;
+        transition: color 0.2s;
+        font-size: var(--small-font);
+
+        &:focus {
+            outline-color: var(--yellow-400);
+        }
+        
+        &:hover {
+            color: var(--yellow-400);
+        }
+
+        &:after {
+            content: " ";
+            width: 0;
+            height: 2px;
+            background-color: var(--nav-underline-color);
+            transition: width 0.2s;
+        }
+        
+        &:hover::after {
+            width: 100%;
+        }
+    }
+}

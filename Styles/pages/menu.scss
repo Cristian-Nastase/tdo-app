@@ -1,0 +1,28 @@
+@forward '../global';
+@forward '../components/menu';
+@forward '../components/shared';
+
+body {
+    padding: var(--spacing-400) var(--spacing-200);
+
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--gray-600);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: var(--spacing-800);
+
+    font-family: "Lexend Deca";
+}
+
+.banner__nav {
+  animation: item-appear var(--nav-appear) ease var(--nav-delay);
+}
+
+.banner__body, .banner__button, .lists {
+  animation: others-appear var(--others-appear) ease-in;
+}

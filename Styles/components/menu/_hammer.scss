@@ -1,0 +1,44 @@
+.hammer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-around;
+
+    padding: var(--spacing-100);
+    padding-inline-end: var(--spacing-200);
+    
+    border: 0;
+    border-radius: inherit;
+
+    gap:var(--spacing-100);
+
+    background-color: transparent;
+
+    color: var(--gray-200);
+
+    transition: background-color 0.2s, color 0.2s;
+    
+    &:hover {
+        background-color: hsl(from var(--gray-400) h s l / 0.5);
+        color: var(--white);
+        cursor: pointer;
+    }
+    
+    &[active] {
+        outline: 3px solid var(--gray-200);
+        background-color: var(--gray-400);
+        color: white;
+    }
+    
+    &__icon {
+        width: 32px;
+        aspect-ratio: 1/1;
+    }
+    
+    &__text {
+        font-size: var(--small-font);
+    
+        font-weight: 400;
+    }
+}
+

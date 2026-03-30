@@ -122,7 +122,7 @@ const enterList = function (e) {
 
     state.currentList = e.currentTarget.dataset.index;
     setStorageState();
-    location.assign("list.html");
+    location.assign("Pages/list.html");
 }
 
 const toggleHammer = function() {

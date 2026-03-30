@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+a:focus-visible, button:focus-visible {
+    outline: 4px solid var(--yellow-400);
+    outline-offset: 5px;
+}
+
+a, button {
+    transition: outline 0.1s;
+}
+
+::-moz-selection {
+    color: black;
+    background-color: var(--yellow-400);
+}
+
+::selection {
+    color: black;
+    background-color: var(--yellow-400);
+}

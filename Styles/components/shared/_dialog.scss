@@ -1,0 +1,44 @@
+.dialog {
+    &[open] {
+        place-self: center;
+    
+        display: grid;
+        grid-auto-flow: row;
+    
+        gap: var(--spacing-400);
+        border-radius: 20px;
+    
+        place-items: center;
+    
+        background-color: var(--gray-800);
+        padding: var(--spacing-400);
+    }
+
+    &::backdrop {
+        background-color: hsl(from black h s l / 0.5);
+    }
+
+    &__close {
+        --rotate: 0deg;
+        justify-self: start;
+        border-image: linear-gradient(var(--rotate), var(--yellow-400), var(--orange-600), var(--red-500), var(--green-500), var(--blue-500), var(--purple-600)) 1;
+        padding: var(--spacing-100) var(--spacing-200);
+        background-color: transparent;
+        font-size: 1rem;
+        animation: dialog-close-return 1s;
+        font-weight: 300;
+        transition: background-color 0.2s, color 0.2s;
+        
+        &:hover {
+            animation: dialog-close-hover 1s;
+            background-color: var(--yellow-400);
+            --rotate: 90deg;
+        }
+    }
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}

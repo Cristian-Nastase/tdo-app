@@ -1,0 +1,20 @@
+@forward '../global';
+@forward '../components/list';
+@forward '../components/shared';
+
+body {
+    padding: var(--spacing-200);
+
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--gray-600);
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Lexend Deca";
+}
+
+main, .nav, .dialog {
+    animation: item-appear 0.3s ease-out;
+}
