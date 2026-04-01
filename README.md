@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="300" src="Assets/Images/icon-transparent.svg"/>
+    <img width="300" src="docs/icon-transparent.svg"/>
 </p>
 
 <h1 align="center">TDO! (CLI To-do app)</h1>
@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-    <img width="32" src="Assets/Images/html-readme.svg" alt="html" />
-    <img width="32" src="Assets/Images/scss-readme.svg" alt="css"/>
-    <img width="32" src="Assets/Images/js-readme.svg" alt="js"/>
+    <img width="32" src="docs/html-readme.svg" alt="html" />
+    <img width="32" src="docs/scss-readme.svg" alt="css"/>
+    <img width="32" src="docs/js-readme.svg" alt="js"/>
 </p>
 
 <h2 style="color:#e2b714">Description</h2>
@@ -20,7 +20,7 @@
 A to-do app meant to look and feel minimalistic, with the developer experience in mind. Use your keyboard just as you would in a terminal or command-line based program to control the app.
 <br>
 
-<img align="center" src="Assets/Images/demo.png">
+<img align="center" src="docs/demo.png">
 
 <h2 style="color: #e2b714">Features</h2>
 <ul style="font-size: 16px">
