@@ -6,7 +6,7 @@
 <p align="center" size="32">
     A CLI based To-do app made for nerds. Write fast, plan faster.
     <br>
-    <a style="font-size:20px; color: #e2b714" href="https://cristian-nastase.github.io/tdo-app/">Live demo - hosted on GitHub Pages</a>
+    <a style="font-size:20px; color: #e2b714" href="https://tdo-app.vercel.app/">Live demo - hosted on Vercel</a>
 </p>
 
 <p align="center">
