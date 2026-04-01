@@ -1,6 +1,6 @@
-@forward '../global';
-@forward '../components/list';
-@forward '../components/shared';
+@forward 'global';
+@forward 'components/list';
+@forward 'components/shared';
 
 body {
     padding: var(--spacing-200);
