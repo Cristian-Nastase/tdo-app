@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDO! - build it.</title>
-    <link rel="icon" type="image/x-icon" href="Assets/Images/icon.svg" />
-    <link rel="stylesheet" href="Styles/sheets/menu.css"/>
+    <link rel="icon" type="image/x-icon" href="assets/images/icon.svg" />
+    <link rel="stylesheet" href="css/pages/menu.css" />
 
     <meta name="title" content="TDO! - a minimalist keyboard-first to-do app">
     <meta name="author" content="Cristian Nastase">
@@ -18,7 +18,7 @@
     <meta property="og:title" content="TDO! - a minimalist keyboard-first to-do app">
     <meta property="og:description" content="A to-do app with keyboard users in mind. Complete your goals using TDO!.">
     
-    <meta property="og:image" content="https://cristian-nastase.github.io/tdo-app/Assets/Images/icon.svg">
+    <meta property="og:image" content="https://cristian-nastase.github.io/tdo-app/assets/images/icon.svg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Keyboard logo">
@@ -30,20 +30,20 @@
     <meta property="twitter:url" content="https://cristian-nastase.github.io/tdo-app/">
     <meta property="twitter:title" content="TDO! - a minimalist keyboard-first to-do app">
 
-    <meta property="twitter:image" content="https://cristian-nastase.github.io/tdo-app/Assets/Images/icon.svg">
+    <meta property="twitter:image" content="https://cristian-nastase.github.io/tdo-app/assets/images/icon.svg">
     <meta property="twitter:image:alt" content="Keyboard logo">
 
     <link rel="canonical" href="https://cristian-nastase.github.io/tdo-app/">
 
-    <script src="Scripts/menuLogic.js" type="module"></script>
-    <script src="Scripts/state.js" type="module"></script>
-    <script src="Scripts/menuFormLogic.js" type="module"></script>
+    <script src="scripts/menuLogic.js" type="module"></script>
+    <script src="scripts/state.js" type="module"></script>
+    <script src="scripts/menuFormLogic.js" type="module"></script>
 </head>
 <body>
     <header class="banner">
         <div class="banner__nav">
             <div class="banner__logo">
-                <img class="banner__icon" src="Assets/Images/icon-transparent.svg" alt="icon" loading="eager" width="32" height="32"/>
+                <img class="banner__icon" src="assets/images/icon-transparent.svg" alt="icon" loading="eager" width="32" height="32"/>
                 <p class="banner__name">TDO!</p>
             </div>
             
@@ -74,7 +74,7 @@
                 <h2 id="lists-title" class="lists__title">your lists</h2>
                 <div class="spacer"></div>
                 <button class="hammer" type="button" aria-label="Toggle delete mode" aria-pressed="false">
-                    <img class="hammer__icon" src="Assets/Images/hammer.svg" alt="hammer" loading="lazy" width="32" height="32">
+                    <img class="hammer__icon" src="assets/images/hammer.svg" alt="hammer" loading="lazy" width="32" height="32">
                     <span class="hammer__text">destroy</span>
                 </button>
             </div>
@@ -87,7 +87,7 @@
 
     <dialog id="dialog" class="dialog">
         <button class="dialog__close" type="button" aria-label="Close the dialog">
-            <img src="Assets/Images/x.svg" alt="close" loading="lazy" width="16" height="32">
+            <img src="assets/images/x.svg" alt="close" loading="lazy" width="16" height="32">
         </button>
         <form class="form">
             <label for="form-title" class="form__field">

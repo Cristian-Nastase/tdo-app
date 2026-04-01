@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TDO! | listName</title>
-    <link rel="icon" type="image/x-icon" href="Assets/Images/icon.svg">
-    <link href="Styles/sheets/list.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
+    <link href="css/pages/list.css" rel="stylesheet" />
 
-    <script type="module" src="Scripts/listLogic.js"></script>
-    <script type="module" src="Scripts/listFormLogic.js"></script>
-    <script type="module" src="Scripts/Components/taskComponent.js"></script>
-    <script type="module" src="Scripts/state.js"></script>
+    <script type="module" src="scripts/listLogic.js"></script>
+    <script type="module" src="scripts/listFormLogic.js"></script>
+    <script type="module" src="scripts/components/taskComponent.js"></script>
+    <script type="module" src="scripts/state.js"></script>
 </head>
 
 <body>
@@ -42,7 +42,7 @@
 
     <dialog id="task-dialog" class="dialog">
         <button type="button" class="dialog__close" aria-label="Close dialog">
-            <img src="Assets/Images/x.svg" alt="close">
+            <img src="assets/images/x.svg" alt="close">
         </button>
 
         <form id="task-form" class="form">
@@ -144,7 +144,7 @@
                 content:'';
                 width: 100%;
                 aspect-ratio: 1/1;
-                background: url(Assets/Images/check.svg) center no-repeat;
+                background: url(assets/images/check.svg) center no-repeat;
                 animation: check-appear 0.2s;
             }
 
@@ -266,12 +266,12 @@
             </div>
 
             <button class="task__settings" type="button" aria-label="Open settings">
-                <img src="Assets/Images/settings.svg" alt="settings">
+                <img src="assets/images/settings.svg" alt="settings">
             </button>
         </div>
         <div class="task__menu hidden" aria-expanded="false">
             <button class="task__button task__button--remove" type="button" aria-label="Delete task">
-                <img class="task__icon" src="Assets/Images/trash.svg" alt="remove" />
+                <img class="task__icon" src="assets/images/trash.svg" alt="remove" />
                 <p class="task__option">Remove</p>
             </button>
         </div>
