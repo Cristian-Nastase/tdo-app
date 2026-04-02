@@ -1,5 +1,6 @@
+@use '../shared/button' as b;
+
 .list {
-    padding: var(--spacing-400);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -7,17 +8,18 @@
     gap: var(--spacing-400);
     
     &__wrapper {
+        width: fit-content;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: var(--spacing-200);
-        padding: var(--spacing-200) var(--spacing-1600);
-        max-width: 80%;
+        padding: var(--spacing-200);
     }
     
     &__title {
         color: var(--yellow-400);
         font-weight: 200;
+        word-break: break-all;
 
         &:hover {
             cursor: pointer;
@@ -25,50 +27,42 @@
     }
     
     &__description {
+        word-break: break-all;
         font-weight: 300;
         color: var(--gray-200);
     }
     
     
     &__container {
-        width: 90%;
-        max-width: 50rem;
+        width: min(100%, 52rem);
+        
+        min-height: var(--spacing-600);
         max-height: 32rem;
+
+        padding: var(--spacing-100);
+        
         overflow-x: hidden;
         overflow-y: scroll;
-        padding: var(--spacing-400);
+        
         display: grid;
         grid-auto-flow: row;
         align-items: center;
         justify-content: stretch;
         row-gap: var(--spacing-100);
     
-        background: hsl(from black h s 5 / 0.8);
+        background: hsl(from var(--gray-900) h s 27);
         border-radius: 20px;
+
+        border: 5px solid var(--gray-900);
+
         scroll-behavior: smooth;
         scrollbar-color: var(--yellow-400) var(--gray-900);
         scrollbar-width: auto;
     }
     
     &__create {
-        padding: var(--spacing-200) var(--spacing-800);
-        min-width: 18rem;
-        background-color: var(--yellow-400);
-        border: 0;
-        border-radius: 20px;
-        font-size: var(--medium-font);
-        font-family: "Lexend Deca";
-        font-weight: 300;
-        text-transform: lowercase;
-        color: black;
-        transition: box-shadow 0.4s, background-color 0.4s, color 0.4s;
-
-        &:hover {
-            background-color: var(--gray-800);
-            color: var(--yellow-400);
-            cursor: pointer;
-            box-shadow: 0px 1px 10px 1px hsl(from var(--yellow-500) h s l / 0.5);
-        }
+        @include b.create-button;
+        font-size: var(--big-font);
     }
     
 }

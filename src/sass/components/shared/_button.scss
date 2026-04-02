@@ -1,0 +1,22 @@
+@mixin create-button {
+    padding: var(--spacing-200) var(--spacing-400);
+
+    background-color: var(--yellow-400);
+    border: 1px solid transparent;
+
+    text-transform: lowercase;
+
+    border-radius: 10px;
+
+    color: var(--gray-900);
+
+    transition: box-shadow 0.2s, border-color 0.2s, color 0.2s, background-color 0.2s;
+
+    &:hover {
+        color: var(--yellow-400);
+        background-color: transparent;
+        cursor: pointer;
+        border-color: var(--yellow-400);
+        box-shadow: 1px 1px 20px 1px hsl(from var(--yellow-400) h s l / 0.4);
+    }
+}

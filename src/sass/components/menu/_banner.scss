@@ -4,53 +4,6 @@
     place-items: center;
     row-gap: var(--spacing-800);
 
-    &__nav {
-        display: grid;
-        grid-auto-flow: column;
-        align-items: center;
-        justify-content: center;
-        
-        gap:var(--spacing-200);
-        
-        padding: var(--spacing-100) var(--spacing-400);
-        
-        background-color: var(--gray-900);
-        border-radius: 10px;
-        animation: left-appear var(--nav-appear) ease-out var(--nav-delay);
-    }
-
-    &__logo {
-        display: flex;
-        
-        justify-self: start;
-        align-items: center;
-        
-
-        gap:var(--spacing-100);
-        
-        color: var(--white);
-
-        border-radius: 10px;
-
-        padding: var(--spacing-100);
-
-        transition: filter 0.2s;
-        
-        &:hover {
-            filter: brightness(0.8);
-            cursor: pointer;
-        }
-    }
-
-    &__icon {
-        width: 32px;
-        aspect-ratio: 1/1;
-    }
-
-    &__name {
-        font-size: var(--medium-font);
-    }
-
     &__body {
         display: flex;
         flex-direction: column;

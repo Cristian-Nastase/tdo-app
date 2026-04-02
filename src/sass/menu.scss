@@ -19,7 +19,7 @@ body {
     font-family: "Lexend Deca";
 }
 
-.banner__nav {
+.nav, .dialog {
   animation: item-appear var(--nav-appear) ease var(--nav-delay);
 }
 

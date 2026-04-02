@@ -49,6 +49,14 @@
         animation: none;
         --hover-color: var(--yellow-400);
     }
+
+    &[edit] .list:hover {
+        --hover-color: var(--gray-200);
+    }
+
+    &[edit] .list--create:hover {
+        --hover-color: var(--yellow-400);
+    }
 }
 
 .list {

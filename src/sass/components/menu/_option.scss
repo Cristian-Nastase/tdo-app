@@ -1,4 +1,4 @@
-.hammer {
+.option { 
     display: flex;
 
     align-items: center;
@@ -18,6 +18,8 @@
 
     transition: background-color 0.2s, color 0.2s;
     
+    font-size: var();
+
     &:hover {
         background-color: hsl(from var(--gray-400) h s l / 0.5);
         color: var(--white);
@@ -41,4 +43,3 @@
         font-weight: 400;
     }
 }
-

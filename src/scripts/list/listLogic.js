@@ -1,4 +1,4 @@
-import { state, setStorageState } from './state.js';
+import { state, setStorageState } from '../state.js';
 
 const listMap = new Map();
 const maxTasks = 400;

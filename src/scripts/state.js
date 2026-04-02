@@ -1,7 +1,7 @@
 export const state = {
     inMenu: false,
     currentList: null,
-    loading: true
+    loading: true,
 };
 
 

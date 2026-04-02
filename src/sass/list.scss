@@ -3,7 +3,7 @@
 @forward 'components/shared';
 
 body {
-    padding: var(--spacing-200);
+    padding: var(--spacing-400) var(--spacing-200);
 
     width: 100%;
     min-height: 100vh;
@@ -12,9 +12,17 @@ body {
     display: flex;
     flex-direction: column;
 
+    align-items: center;
+
+    gap: var(--spacing-800);
+
     font-family: "Lexend Deca";
 }
 
-main, .nav, .dialog {
+main {
+    width: 100%;
+}
+
+main, .dialog {
     animation: item-appear 0.3s ease-out;
 }

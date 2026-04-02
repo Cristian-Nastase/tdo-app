@@ -35,28 +35,27 @@
 
     <link rel="canonical" href="https://cristian-nastase.github.io/tdo-app/">
 
-    <script src="scripts/menuLogic.js" type="module"></script>
+    <script src="scripts/menu/menuLogic.js" type="module"></script>
+    <script src="scripts/menu/menuUI.js" type="module"></script>
+    <script src="scripts/menu/menuFormLogic.js" type="module"></script>
     <script src="scripts/state.js" type="module"></script>
-    <script src="scripts/menuFormLogic.js" type="module"></script>
 </head>
 <body>
     <header class="banner">
-        <div class="banner__nav">
-            <div class="banner__logo">
-                <img class="banner__icon" src="assets/images/icon-transparent.svg" alt="icon" loading="eager" width="32" height="32"/>
-                <p class="banner__name">TDO!</p>
+        <nav class="nav" aria-label="Main nav">
+            <div class="nav__logo">
+                <img class="nav__icon" src="assets/images/icon-transparent.svg" alt="icon" loading="eager" width="32" height="32"/>
+                <p class="nav__name">TDO!</p>
             </div>
             
             <div class="spacer"></div>
 
-            <nav class="nav" aria-label="Main nav">
-                <ul class="nav__links">
-                    <li class="nav__link nav__link--home"><a href="index.html">Home</a></li>
-                    <li class="nav__link nav__link--support"><a href="https://github.com/Cristian-Nastase/tdo-app" target="_blank">Support</a></li>
-                    <li class="nav__link nav__link--contact"><a href="https://github.com/Cristian-Nastase/tdo-app" target="_blank">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+            <ul class="nav__links">
+                <li class="nav__link nav__link--home"><a href="index.html">Home</a></li>
+                <li class="nav__link nav__link--support"><a href="https://github.com/Cristian-Nastase/tdo-app" target="_blank">Support</a></li>
+                <li class="nav__link nav__link--contact"><a href="https://github.com/Cristian-Nastase/tdo-app" target="_blank">Contact</a></li>
+            </ul>
+        </nav>
 
         <div class="banner__body"> 
             <h1 class="banner__header">welcome to <span class="banner__header__span">TDO!</span></h1>
@@ -73,9 +72,13 @@
             <div class="lists__header">
                 <h2 id="lists-title" class="lists__title">your lists</h2>
                 <div class="spacer"></div>
-                <button class="hammer" type="button" aria-label="Toggle delete mode" aria-pressed="false">
-                    <img class="hammer__icon" src="assets/images/hammer.svg" alt="hammer" loading="lazy" width="32" height="32">
-                    <span class="hammer__text">destroy</span>
+                <button class="option hammer" type="button" aria-label="Toggle delete mode" aria-pressed="false">
+                    <img class="option__icon" src="assets/images/hammer.svg" alt="hammer" loading="lazy" width="32" height="32">
+                    <span class="option__text">destroy</span>
+                </button>
+                <button class="option edit" type="button" aria-toggle="Toggle edit mode" aria-pressed="false">
+                    <img class="option__icon" src="assets/images/edit.svg" alt="edit" loading="lazy" width="32" height="32">
+                    <span class="option__text">edit</span> 
                 </button>
             </div>
 
@@ -85,7 +88,7 @@
         </section>
     </main>
 
-    <dialog id="dialog" class="dialog">
+    <dialog id="dialog" class="dialog" aria-label="Create a new list">
         <button class="dialog__close" type="button" aria-label="Close the dialog">
             <img src="assets/images/x.svg" alt="close" loading="lazy" width="16" height="32">
         </button>
@@ -102,6 +105,26 @@
             </label>
 
             <button type="submit" class="form__submit" aria-label="Create list">Create list</button>
+        </form>
+    </dialog>
+    
+    <dialog id="dialog-edit" class="dialog dialog--edit" aria-label="Edit list">
+        <button class="dialog__close" type="button" aria-label="Close the dialog">
+            <img src="assets/images/x.svg" alt="close" loading="lazy" width="16" height="32">
+        </button>
+        <form class="form">
+            <label for="form-title-edit" class="form__field">
+                <span class="form__label">Name *</span>
+                <input autofocus class="form__input" id="form-title-edit" type="text" required name="title" autocomplete="off" aria-describedby="title-error-edit" placeholder="Enter a name.."/>
+                <span class="form__error" id="title-error-edit">Enter a task name</span>
+            </label>
+
+            <label for="form-description-edit" class="form__field">
+                <span class="form__label">Description</span>
+                <textarea id="form-description-edit" class="form__textarea" placeholder="Enter a description.." name="description"></textarea>
+            </label>
+
+            <button type="submit" class="form__submit" aria-label="Edit list">edit list</button>
         </form>
     </dialog>
 </body>

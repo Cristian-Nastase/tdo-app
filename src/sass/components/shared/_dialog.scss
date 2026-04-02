@@ -1,44 +1,46 @@
 .dialog {
     &[open] {
+        width: min(100% - var(--spacing-800), 30rem);
         place-self: center;
     
         display: grid;
         grid-auto-flow: row;
-    
-        gap: var(--spacing-400);
-        border-radius: 20px;
-    
+
         place-items: center;
     
+        gap: var(--spacing-400);
+        
         background-color: var(--gray-800);
+        
+        border: 5px solid var(--gray-600);
+        border-radius: 20px;
+        
         padding: var(--spacing-400);
     }
-
+    
     &::backdrop {
-        background-color: hsl(from black h s l / 0.5);
+        background-color: hsl(from black h s l / 0.6);
     }
-
+    
     &__close {
-        --rotate: 0deg;
         justify-self: start;
-        border-image: linear-gradient(var(--rotate), var(--yellow-400), var(--orange-600), var(--red-500), var(--green-500), var(--blue-500), var(--purple-600)) 1;
         padding: var(--spacing-100) var(--spacing-200);
-        background-color: transparent;
-        font-size: 1rem;
-        animation: dialog-close-return 1s;
-        font-weight: 300;
-        transition: background-color 0.2s, color 0.2s;
+        background-color: var(--gray-200);
         
+        border:0;
+        border-radius: 20px;
+
+        outline: 5px solid var(--gray-200);
+        outline-offset: -1px;
+
+        transition: outline-offset 0.2s, outline-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+
         &:hover {
-            animation: dialog-close-hover 1s;
+            outline-offset: -5px;
+            outline-color: var(--yellow-400);
             background-color: var(--yellow-400);
-            --rotate: 90deg;
+
+            box-shadow: 0px 0px 10px 1px var(--yellow-400);
         }
     }
-}
-
-@property --rotate {
-    syntax: "<angle>";
-    inherits: false;
-    initial-value: 0deg;
 }

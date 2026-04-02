@@ -1,12 +1,18 @@
-import { state, setStorageState } from "./state.js";
-import { startDialog } from "./menuFormLogic.js"
+import { state, setStorageState } from "../state.js";
+import { createListElement, loadUI } from "./menuUI.js";
 
 const lists = new Map();
 const maxLists = 20;
 const usedIds = new Set();
 
-const hammerButton = document.querySelector(".hammer");
-const listsSection = document.querySelector(".lists");
+export const returnListData = function(id) {
+    const list = lists.get(id);
+
+    const title = list?.title ?? "";
+    const description = list?.description ?? "";
+
+    return { title, description };
+}
 
 const generateListId = function() {
     if(lists.size === maxLists)
@@ -26,7 +32,7 @@ const extractIds = function() {
     const data = JSON.parse(localStorage.getItem("used-ids"));
 
     if(!data)
-        throw new Error(`Cannot read used ids from localStorage.`);
+        return [];
     
     return data;
 }
@@ -58,7 +64,6 @@ const saveLocalStorage = function (id) {
     localStorage.setItem(`list-${id}`, data);
 }
 
-const listsContainer = document.querySelector(".lists__container");
 
 export const createList = function (title, description, listId = null) {
     if (lists.size === maxLists) {
@@ -77,18 +82,7 @@ export const createList = function (title, description, listId = null) {
 
     lists.set(id, list);
 
-    const listElement = document.createElement("button");
-    listElement.type = "button";
-    listElement.classList.add("list");
-    listElement.dataset.index = id;
-
-    const paragraph = document.createElement("p");
-    paragraph.innerText = title;
-
-    listElement.appendChild(paragraph);
-    listsContainer.prepend(listElement);
-
-    listElement.addEventListener("click", enterList);
+    createListElement(title, id);
 
     if(!state.loading) {
         saveLocalStorage(id);
@@ -96,7 +90,18 @@ export const createList = function (title, description, listId = null) {
     }
 }
 
-const removeList = function(e) {
+export const editList = function(id, title, description) {
+    const intId = parseInt(id);
+
+    const list = lists.get(intId);
+
+    list.title = title;
+    list.description = description;
+
+    saveLocalStorage(intId);
+}
+
+export const removeList = function(e) {
     const element = e.currentTarget;
 
     const id = parseInt(element.dataset.index);
@@ -114,23 +119,10 @@ const removeList = function(e) {
     } , 200);
 }
 
-const enterList = function (e) {
-    if(hammerButton.hasAttribute("active")) {
-        removeList(e);
-        return;
-    }
-
+export const enterList = function (e) {
     state.currentList = e.currentTarget.dataset.index;
     setStorageState();
     location.assign("list.html");
-}
-
-const toggleHammer = function() {
-    hammerButton.toggleAttribute("active");
-    listsSection.toggleAttribute("hammer");
-
-    const ariaPressed = hammerButton.hasAttribute("active") ? "true" : "false"; 
-    hammerButton.setAttribute("aria-pressed", ariaPressed);
 }
 
 const loadMenu = function () {
@@ -139,15 +131,7 @@ const loadMenu = function () {
     state.currentList = null;
     setStorageState();
 
-    const createButtonBanner = document.querySelector(".banner__button");
-    createButtonBanner.addEventListener("click", startDialog);
-
-    const createButtonContainer = document.querySelector(".list--create");
-    createButtonContainer.addEventListener("click", startDialog);
-    
-    hammerButton.addEventListener("click", toggleHammer);
-    hammerButton.removeAttribute("active");
-    listsContainer.removeAttribute("hammer");
+    loadUI();
 
     try {
         const ids = extractIds();

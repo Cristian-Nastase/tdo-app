@@ -1,3 +1,5 @@
+@use 'button' as b;
+
 .form {
     display: flex;
     flex-direction: column;
@@ -18,7 +20,7 @@
     &__input {
         font-family: 'Lexend Deca';
         font-weight: 200;
-        background-color: var(--black);
+        background-color: hsl(from var(--gray-900) h s 13);
         border: 0;
         border-radius: 20px;
         padding: var(--spacing-100) var(--spacing-200);
@@ -31,7 +33,7 @@
         }
 
         &:user-invalid {
-            outline: 1px solid red;
+            outline: 1px solid var(--orange-600);
         }
 
         &:user-invalid+.form__error {
@@ -44,14 +46,14 @@
         justify-self: end;
         text-transform: lowercase;
         opacity: 0;
-        color: var(--red-500);
+        color: var(--orange-600);
         font-weight: 200;
         transition: opacity 0.3s;
     }
     
     &__textarea {
         border-radius: 20px 20px 0px 20px;
-        background: var(--black);
+        background-color: hsl(from var(--gray-900) h s 13);
         border: 0;
         resize: vertical;
         min-height: 7rem;
@@ -67,22 +69,7 @@
     }
     
     &__submit {
-        align-self: center;
-        padding: var(--spacing-200) var(--spacing-800);
-        min-width: 18rem;
-        border: 0;
-        border-radius: 20px;
+        @include b.create-button;
         font-size: var(--medium-font);
-        font-family: "Lexend Deca";
-        font-weight: 300;
-        text-transform: lowercase;
-        color: var(--yellow-400);
-        background-color: transparent;
-        transition: box-shadow 0.4s, background-color 0.4s, color 0.4s;
-        box-shadow: 0px 1px 10px 1px hsl(from var(--yellow-500) h s l / 0.5);
-        
-        &__submit:hover {
-            cursor: pointer;
-        }
     }
 }
