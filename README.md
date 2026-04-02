@@ -25,7 +25,7 @@ A to-do app meant to look and feel minimalistic, with the developer experience i
 <h2 style="color: #e2b714">Features</h2>
 <ul style="font-size: 16px">
     <li>Minimalist and elegant design inspired by <a style="color: #e2b714" href="https://monkeytype.com/">MonkeyType</a></li>
-    <li>Create and delete lists</li>
+    <li>Create,delete and edit lists</li>
     <li>Manage tasks</li>
     <li>Drag & drop (IN PROGRESS)</li>
     <li>Command line to control the interface (IN PROGRESS)</li>
