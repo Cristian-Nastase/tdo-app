@@ -1,4 +1,4 @@
-import { getTaskContent, setChecked, removeTask } from "../listLogic.js";
+import { getTaskContent, setChecked, removeTask } from "../list/listLogic.js";
 class Task extends HTMLElement {
     content;
 

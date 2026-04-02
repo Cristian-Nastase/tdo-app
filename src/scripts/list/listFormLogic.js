@@ -1,8 +1,8 @@
-import { newTask } from './listLogic.js';
+import { newTask } from "./listLogic.js";
 
 const startDialog = function () {
     dialog.showModal();
-}
+};
 
 const dialog = document.getElementById("task-dialog");
 
@@ -21,7 +21,7 @@ const dialogSubmit = function (e) {
     newTask(data);
     dialog.close();
     form.reset();
-}
+};
 
 const form = document.getElementById("task-form");
 form.addEventListener("submit", dialogSubmit);

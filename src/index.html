@@ -1,131 +1,197 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDO! - build it.</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/icon.svg" />
-    <link rel="stylesheet" href="css/menu.css" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="title" content="TDO! - a minimalist keyboard-first to-do app">
-    <meta name="author" content="Cristian Nastase">
-    <meta name="description" content="A to-do app with keyboard users in mind. Complete your goals using TDO!.">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
+        <title>TDO! - build it.</title>
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cristian-nastase.github.io/tdo-app/">
-    <meta property="og:title" content="TDO! - a minimalist keyboard-first to-do app">
-    <meta property="og:description" content="A to-do app with keyboard users in mind. Complete your goals using TDO!.">
-    
-    <meta property="og:image" content="https://cristian-nastase.github.io/tdo-app/assets/images/icon.svg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Keyboard logo">
+        <link rel="icon" type="image/x-icon" href="assets/images/icon.svg" />
+        <link rel="stylesheet" href="css/menu.css" />
 
-    <meta property="og:site_name" content="github.io/tdo-app">
-    <meta property="og:locale" content="en_US">
+        <meta name="title" content="TDO! - a minimalist keyboard-first to-do app" />
+        <meta name="author" content="Cristian Nastase" />
+        <meta name="description" content="A to-do app with keyboard users in mind. Complete your goals using TDO!." />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
 
-    <meta property="twitter:card" content="Keyboard logo">
-    <meta property="twitter:url" content="https://cristian-nastase.github.io/tdo-app/">
-    <meta property="twitter:title" content="TDO! - a minimalist keyboard-first to-do app">
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://tdo-app.vercel.app/assets/images/icon.svg" />
+        <meta property="og:title" content="TDO! - a minimalist keyboard-first to-do app" />
+        <meta
+            property="og:description"
+            content="A to-do app with keyboard users in mind. Complete your goals using TDO!."
+        />
 
-    <meta property="twitter:image" content="https://cristian-nastase.github.io/tdo-app/assets/images/icon.svg">
-    <meta property="twitter:image:alt" content="Keyboard logo">
+        <meta property="og:image" content="" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Keyboard logo" />
 
-    <link rel="canonical" href="https://cristian-nastase.github.io/tdo-app/">
+        <meta property="og:site_name" content="github.io/tdo-app" />
+        <meta property="og:locale" content="en_US" />
 
-    <script src="scripts/menu/menuLogic.js" type="module"></script>
-    <script src="scripts/menu/menuUI.js" type="module"></script>
-    <script src="scripts/menu/menuFormLogic.js" type="module"></script>
-    <script src="scripts/state.js" type="module"></script>
-</head>
-<body>
-    <header class="banner">
-        <nav class="nav" aria-label="Main nav">
-            <div class="nav__logo">
-                <img class="nav__icon" src="assets/images/icon-transparent.svg" alt="icon" loading="eager" width="32" height="32"/>
-                <p class="nav__name">TDO!</p>
+        <meta property="twitter:card" content="Keyboard logo" />
+        <meta property="twitter:url" content="tdo-app.vercel.app/" />
+        <meta property="twitter:title" content="TDO! - a minimalist keyboard-first to-do app" />
+
+        <meta property="twitter:image" content="https://tdo-app.vercel.app/assets/images/icon.svg" />
+        <meta property="twitter:image:alt" content="Keyboard logo" />
+
+        <link rel="canonical" href="https://tdo-app.vercel.app/" />
+
+        <script src="scripts/menu/menuLogic.js" type="module"></script>
+        <script src="scripts/menu/menuUI.js" type="module"></script>
+        <script src="scripts/menu/menuFormLogic.js" type="module"></script>
+        <script src="scripts/state.js" type="module"></script>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav" aria-label="Main nav">
+                <div class="nav__logo">
+                    <img
+                        class="nav__icon"
+                        src="assets/images/icon-transparent.svg"
+                        alt="icon"
+                        loading="eager"
+                        width="32"
+                        height="32"
+                    />
+                    <p class="nav__name">TDO!</p>
+                </div>
+
+                <ul class="nav__links">
+                    <li class="nav__link nav__link--home">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="nav__link nav__link--support">
+                        <a href="https://github.com/Cristian-Nastase/tdo-app" target="_blank">Support</a>
+                    </li>
+                    <li class="nav__link nav__link--contact">
+                        <a href="https://github.com/Cristian-Nastase/tdo-app" target="_blank">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="banner" aria-labelledby="banner-header">
+            <div class="banner__body">
+                <h1 id="banner-header" class="banner__header">
+                    welcome to
+                    <span class="banner__header__span">TDO!</span>
+                </h1>
+                <p class="banner__text">create a new list or open an existing one.</p>
             </div>
-            
-            <div class="spacer"></div>
 
-            <ul class="nav__links">
-                <li class="nav__link nav__link--home"><a href="index.html">Home</a></li>
-                <li class="nav__link nav__link--support"><a href="https://github.com/Cristian-Nastase/tdo-app" target="_blank">Support</a></li>
-                <li class="nav__link nav__link--contact"><a href="https://github.com/Cristian-Nastase/tdo-app" target="_blank">Contact</a></li>
-            </ul>
-        </nav>
-
-        <div class="banner__body"> 
-            <h1 class="banner__header">welcome to <span class="banner__header__span">TDO!</span></h1>
-            <p class="banner__text">create a new list or open an existing one.</p>
-        </div>
-
-        <button type="button" class="banner__button" aria-label="Create a new list">
-            <span class="banner__create">create a new list</span>
-        </button>
-    </header>
-    
-    <main>
-        <section class="lists" aria-labelledby="lists-title">
-            <div class="lists__header">
-                <h2 id="lists-title" class="lists__title">your lists</h2>
-                <div class="spacer"></div>
-                <button class="option hammer" type="button" aria-label="Toggle delete mode" aria-pressed="false">
-                    <img class="option__icon" src="assets/images/hammer.svg" alt="hammer" loading="lazy" width="32" height="32">
-                    <span class="option__text">destroy</span>
-                </button>
-                <button class="option edit" type="button" aria-toggle="Toggle edit mode" aria-pressed="false">
-                    <img class="option__icon" src="assets/images/edit.svg" alt="edit" loading="lazy" width="32" height="32">
-                    <span class="option__text">edit</span> 
-                </button>
-            </div>
-
-            <div class="lists__container">
-                <button class="list list--create" type="button" aria-label="Add new list">+</button>
-            </div>
+            <button type="button" class="banner__button" aria-label="Create a new list">
+                <span class="banner__create">create a new list</span>
+            </button>
         </section>
-    </main>
 
-    <dialog id="dialog" class="dialog" aria-label="Create a new list">
-        <button class="dialog__close" type="button" aria-label="Close the dialog">
-            <img src="assets/images/x.svg" alt="close" loading="lazy" width="16" height="32">
-        </button>
-        <form class="form">
-            <label for="form-title" class="form__field">
-                <span class="form__label">Name *</span>
-                <input autofocus class="form__input" id="form-title" type="text" required name="title" autocomplete="off" aria-describedby="title-error" placeholder="Enter a name.."/>
-                <span class="form__error" id="title-error">Enter a task name</span>
-            </label>
+        <main>
+            <section class="lists" aria-labelledby="lists-title">
+                <div class="lists__header">
+                    <h2 id="lists-title" class="lists__title">your lists</h2>
+                    <div class="spacer"></div>
+                    <button class="option hammer" type="button" aria-label="Toggle delete mode" aria-pressed="false">
+                        <img
+                            class="option__icon"
+                            src="assets/images/hammer.svg"
+                            alt="hammer"
+                            loading="lazy"
+                            width="32"
+                            height="32"
+                        />
+                        <span class="option__text">destroy</span>
+                    </button>
+                    <button class="option edit" type="button" aria-label="Toggle edit mode" aria-pressed="false">
+                        <img
+                            class="option__icon"
+                            src="assets/images/edit.svg"
+                            alt="edit"
+                            loading="lazy"
+                            width="32"
+                            height="32"
+                        />
+                        <span class="option__text">edit</span>
+                    </button>
+                </div>
 
-            <label for="form-description" class="form__field">
-                <span class="form__label">Description</span>
-                <textarea id="form-description" class="form__textarea" placeholder="Enter a description.." name="description"></textarea>
-            </label>
+                <div class="lists__container">
+                    <button class="list list--create" type="button" aria-label="Add new list">+</button>
+                </div>
+            </section>
+        </main>
 
-            <button type="submit" class="form__submit" aria-label="Create list">Create list</button>
-        </form>
-    </dialog>
-    
-    <dialog id="dialog-edit" class="dialog dialog--edit" aria-label="Edit list">
-        <button class="dialog__close" type="button" aria-label="Close the dialog">
-            <img src="assets/images/x.svg" alt="close" loading="lazy" width="16" height="32">
-        </button>
-        <form class="form">
-            <label for="form-title-edit" class="form__field">
-                <span class="form__label">Name *</span>
-                <input autofocus class="form__input" id="form-title-edit" type="text" required name="title" autocomplete="off" aria-describedby="title-error-edit" placeholder="Enter a name.."/>
-                <span class="form__error" id="title-error-edit">Enter a task name</span>
-            </label>
+        <dialog id="dialog" class="dialog" aria-label="Create a new list">
+            <button class="dialog__close" type="button" aria-label="Close the dialog">
+                <img src="assets/images/x.svg" alt="close" loading="lazy" width="16" height="32" />
+            </button>
 
-            <label for="form-description-edit" class="form__field">
-                <span class="form__label">Description</span>
-                <textarea id="form-description-edit" class="form__textarea" placeholder="Enter a description.." name="description"></textarea>
-            </label>
+            <form class="form">
+                <label for="form-title" class="form__field">
+                    <span class="form__label">Name *</span>
+                    <input
+                        autofocus
+                        class="form__input"
+                        id="form-title"
+                        type="text"
+                        required
+                        name="title"
+                        autocomplete="off"
+                        aria-describedby="title-error"
+                        placeholder="Enter a name.."
+                    />
+                    <span class="form__error" id="title-error">Enter a task name</span>
+                </label>
 
-            <button type="submit" class="form__submit" aria-label="Edit list">edit list</button>
-        </form>
-    </dialog>
-</body>
+                <label for="form-description" class="form__field">
+                    <span class="form__label">Description</span>
+                    <textarea
+                        id="form-description"
+                        class="form__textarea"
+                        placeholder="Enter a description.."
+                        name="description"
+                    ></textarea>
+                </label>
+
+                <button type="submit" class="form__submit" aria-label="Create list">Create list</button>
+            </form>
+        </dialog>
+
+        <dialog id="dialog-edit" class="dialog dialog--edit" aria-label="Edit list">
+            <button class="dialog__close" type="button" aria-label="Close the dialog">
+                <img src="assets/images/x.svg" alt="close" loading="lazy" width="16" height="32" />
+            </button>
+            <form class="form">
+                <label for="form-title-edit" class="form__field">
+                    <span class="form__label">Name *</span>
+                    <input
+                        autofocus
+                        class="form__input"
+                        id="form-title-edit"
+                        type="text"
+                        required
+                        name="title"
+                        autocomplete="off"
+                        aria-describedby="title-error-edit"
+                        placeholder="Enter a name.."
+                    />
+                    <span class="form__error" id="title-error-edit">Enter a task name</span>
+                </label>
+
+                <label for="form-description-edit" class="form__field">
+                    <span class="form__label">Description</span>
+                    <textarea
+                        id="form-description-edit"
+                        class="form__textarea"
+                        placeholder="Enter a description.."
+                        name="description"
+                    ></textarea>
+                </label>
+
+                <button type="submit" class="form__submit" aria-label="Edit list">edit list</button>
+            </form>
+        </dialog>
+    </body>
 </html>
