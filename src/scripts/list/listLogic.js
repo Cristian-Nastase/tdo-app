@@ -1,9 +1,8 @@
 import { state, setStorageState } from '../state.js';
+import { loadUI, createListElement, removeTaskElement } from './listUI.js';
 
 const listMap = new Map();
 const maxTasks = 400;
-
-const listContainer = document.querySelector(".list__container");
 
 const returnCurrentId = function () {
     return parseInt(state.currentList);
@@ -23,10 +22,10 @@ const returnListData = function () {
     return list;
 }
 
-export const returnTaskData =  function (_id) {
+export const returnTaskData = function (_id) {
     const id = Number(_id);
-    
-    if(!listMap.has(id)) {
+
+    if (!listMap.has(id)) {
         return null;
     }
 
@@ -34,19 +33,28 @@ export const returnTaskData =  function (_id) {
 }
 
 const createID = function () {
-    return Math.ceil(Math.random() * maxTasks);
+    if (listMap.size === maxTasks) {
+        throw new Error("No more tasks available");
+    }
+
+    for (let i = 0; i < maxTasks; i++) {
+        if (!listMap.has(i))
+            return i;
+    }
 };
 
 export const newTask = function (data) {
     const taskData = {};
 
     if (!state.loading) {
-        let id = createID();
-
-        while (listMap.has(id)) {
+        let id;
+        try {
             id = createID();
         }
-
+        catch(error) {
+            console.warn("Task limit reached. Delete tasks or create a  new list.");
+            return;
+        }
         const obj = {
             id,
             checked: false,
@@ -60,10 +68,7 @@ export const newTask = function (data) {
     }
 
     listMap.set(taskData.id, taskData);
-
-    const task = document.createElement("task-node");
-    task.dataset.id = taskData.id;
-    listContainer.append(task);
+    createListElement(taskData);
 
     if (state.loading)
         return;
@@ -71,7 +76,7 @@ export const newTask = function (data) {
     populateLocalStorage();
 }
 
-export const editTask = function(_id, title) {
+export const editTask = function (_id, title) {
     const id = Number(_id);
 
     const task = listMap.get(id);
@@ -79,9 +84,6 @@ export const editTask = function(_id, title) {
 
     populateLocalStorage();
 }
-
-const listTitle = document.querySelector(".list__title");
-const listDescription = document.querySelector(".list__description");
 
 const loadList = function () {
     state.inMenu = false;
@@ -98,8 +100,7 @@ const loadList = function () {
         return;
     }
 
-    listTitle.innerText = listData.title;
-    listDescription.innerText = listData.description || "No description";
+    loadUI(listData.title, listData.description);
 
     for (const taskData of listData.tasks) {
         newTask(taskData);
@@ -145,5 +146,5 @@ export const removeTask = function (id) {
     listMap.delete(id);
     populateLocalStorage();
 
-    listContainer.querySelector(`task-node[data-id="${id}"]`).remove();
+    removeTaskElement(id);
 }

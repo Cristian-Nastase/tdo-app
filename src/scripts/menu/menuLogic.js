@@ -143,7 +143,7 @@ const loadMenu = function () {
         const { ids, diff } = extractIds();
         ids.forEach(usedIds.add, usedIds);
 
-        if(ids) throw new Error("No ids found");
+        if(!ids) throw new Error("No ids found");
 
         if(diff) saveIds();
 

@@ -4,7 +4,6 @@ export const state = {
     loading: true,
 };
 
-
 export const setStorageState = function() {
     const sessionState = JSON.stringify(state);
     sessionStorage.setItem("state", sessionState);

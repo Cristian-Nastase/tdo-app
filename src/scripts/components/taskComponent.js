@@ -3,6 +3,12 @@ import { startDialog } from '../list/listFormLogic.js';
 
 class Task extends HTMLElement {
     content;
+    rendered;
+
+    constructor() {
+        super();
+        this.rendered = false;
+    }
 
     connectedCallback() {
         const taskTemplate = document.getElementById("task");
@@ -20,7 +26,12 @@ class Task extends HTMLElement {
     setContent(data) {
         this.content = data;
 
-        this.renderData();
+        if(!this.rendered) {
+            this.renderData();
+            return;
+        }
+
+        this.updateData();
     }
 
     setTitle(title) {
@@ -56,7 +67,9 @@ class Task extends HTMLElement {
         deleteTask.addEventListener("click", () => removeTask(id));
 
         const editTask = this.shadowRoot.querySelector(".task__button--edit");
-        editTask.addEventListener("click", () => { startDialog(id) });
+        editTask.addEventListener("click", () => startDialog(null, id));
+
+        this.rendered = true;
     }
 
     updateData() {

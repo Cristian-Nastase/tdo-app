@@ -1,8 +1,8 @@
 import { newTask, editTask, returnTaskData } from "./listLogic.js";
 import { editTaskElement } from "./listUI.js";
 
-export const startDialog = function (id = null) {
-    if (!id) {
+export const startDialog = function (e = null, id = null) {
+    if (!id && id !== 0) {
         dialog.showModal();
         return;
     }
