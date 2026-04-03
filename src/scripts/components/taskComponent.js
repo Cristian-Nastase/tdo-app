@@ -1,4 +1,6 @@
 import { getTaskContent, setChecked, removeTask } from "../list/listLogic.js";
+import { startDialog } from '../list/listFormLogic.js';
+
 class Task extends HTMLElement {
     content;
 
@@ -9,7 +11,7 @@ class Task extends HTMLElement {
         try {
             getTaskContent(parseInt(this.dataset.id), this);
         }
-        catch(error) {
+        catch (error) {
             console.error(error);
             this.remove();
         }
@@ -19,6 +21,12 @@ class Task extends HTMLElement {
         this.content = data;
 
         this.renderData();
+    }
+
+    setTitle(title) {
+        this.content.title = title;
+
+        this.updateData();
     }
 
     renderData() {
@@ -46,6 +54,14 @@ class Task extends HTMLElement {
         const deleteTask = this.shadowRoot.querySelector(".task__button--remove");
         const id = this.content.id;
         deleteTask.addEventListener("click", () => removeTask(id));
+
+        const editTask = this.shadowRoot.querySelector(".task__button--edit");
+        editTask.addEventListener("click", () => { startDialog(id) });
+    }
+
+    updateData() {
+        const slot = this.querySelector(`span[slot="title"]`);
+        slot.innerText = this.content.title;
     }
 
     toggleChecked() {

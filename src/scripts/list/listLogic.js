@@ -23,6 +23,16 @@ const returnListData = function () {
     return list;
 }
 
+export const returnTaskData =  function (_id) {
+    const id = Number(_id);
+    
+    if(!listMap.has(id)) {
+        return null;
+    }
+
+    return listMap.get(id);
+}
+
 const createID = function () {
     return Math.ceil(Math.random() * maxTasks);
 };
@@ -41,7 +51,6 @@ export const newTask = function (data) {
             id,
             checked: false,
             ...data,
-            subtasks: []
         };
 
         Object.assign(taskData, obj);
@@ -58,6 +67,15 @@ export const newTask = function (data) {
 
     if (state.loading)
         return;
+
+    populateLocalStorage();
+}
+
+export const editTask = function(_id, title) {
+    const id = Number(_id);
+
+    const task = listMap.get(id);
+    task.title = title;
 
     populateLocalStorage();
 }

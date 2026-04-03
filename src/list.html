@@ -9,6 +9,7 @@
 
         <script type="module" src="scripts/list/listLogic.js"></script>
         <script type="module" src="scripts/list/listFormLogic.js"></script>
+        <script type="module" src="scripts/list/listUI.js"></script>
         <script type="module" src="scripts/components/taskComponent.js"></script>
         <script type="module" src="scripts/state.js"></script>
     </head>
@@ -77,17 +78,32 @@
                     <span class="form__error">Enter a task name</span>
                 </label>
 
-                <label for="form-description" class="form__field">
-                    <span class="form__label">Description</span>
-                    <textarea
-                        id="form-description"
-                        class="form__textarea"
-                        placeholder="Enter a description.."
-                        name="description"
-                    ></textarea>
+                <button type="submit" class="form__submit" aria-label="Create task">Create task</button>
+            </form>
+        </dialog>
+
+        <dialog id="dialog-edit" class="dialog dialog--edit" aria-label="Edit task">
+            <button class="dialog__close dialog__close--edit" type="button" aria-label="Close the dialog">
+                <img src="assets/images/x.svg" alt="close" loading="lazy" width="16" height="32" />
+            </button>
+            <form id="form-edit" class="form">
+                <label for="form-title-edit" class="form__field">
+                    <span class="form__label">Name *</span>
+                    <input
+                        autofocus
+                        class="form__input"
+                        id="form-title-edit"
+                        type="text"
+                        required
+                        name="title"
+                        autocomplete="off"
+                        aria-describedby="title-error-edit"
+                        placeholder="Enter a name.."
+                    />
+                    <span class="form__error" id="title-error-edit">Enter a task name</span>
                 </label>
 
-                <button type="submit" class="form__submit" aria-label="Create task">Create task</button>
+                <button type="submit" class="form__submit" aria-label="Edit task">edit task</button>
             </form>
         </dialog>
 
@@ -220,10 +236,14 @@
 
                 .task__menu {
                     width: 100%;
+
                     display: flex;
                     flex-direction: column;
+
                     animation: appear-accordion 0.2s;
                     transform-origin: top center;
+
+                    gap: var(--spacing-100);
                 }
 
                 .task__menu.hidden {
@@ -242,7 +262,6 @@
 
                 @keyframes disappear-accordion {
                     0% {
-                        display: block;
                         transform: scaleY(1);
                     }
 
@@ -253,20 +272,23 @@
 
                 .task__button {
                     display: flex;
-                    flex-direction: row;
-                    flex: 1;
+                    align-items: center;
 
                     gap: var(--spacing-200);
-                    padding: 0 var(--spacing-200);
+                    padding: var(--spacing-200) var(--spacing-400);
                     margin-inline-start: var(--spacing-200);
+
                     border-width: 0px;
                     border-color: var(--gray-200);
                     border-radius: 20px;
+                    
                     background-color: var(--gray-900);
                     color: var(--gray-200);
+                    
                     font-family: "Lexend Deca";
                     font-weight: 300;
                     font-size: var(--xsmall-font);
+                    
                     transition: box-shadow 0.2s;
                 }
 
@@ -302,7 +324,11 @@
             <div class="task__menu hidden" aria-expanded="false">
                 <button class="task__button task__button--remove" type="button" aria-label="Delete task">
                     <img class="task__icon" src="assets/images/trash.svg" alt="remove" />
-                    <p class="task__option">Remove</p>
+                    <span class="task__option">Remove</span>
+                </button>
+                <button class="task__button task__button--edit" type="button" aria-label="Edit task">
+                    <img class="task__icon" src="assets/images/edit.svg" alt="edit" />
+                    <span class="task__option">Edit</span>
                 </button>
             </div>
         </template>

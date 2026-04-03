@@ -143,6 +143,8 @@ const loadMenu = function () {
         const { ids, diff } = extractIds();
         ids.forEach(usedIds.add, usedIds);
 
+        if(ids) throw new Error("No ids found");
+
         if(diff) saveIds();
 
         const data = [];
@@ -156,7 +158,6 @@ const loadMenu = function () {
             createList(list.title, list.description, new Date(list.lastModified), list.id);
         }
     } catch (error) {
-        console.error(error);
         console.warn("No data found, will load an empty menu.");
     }
 
