@@ -150,9 +150,9 @@ const loadMenu = function () {
             data.push(extractLocalStorage(id));
         }
 
-        data.filter(Boolean).sort((a, b) => a.lastModified - b.lastModified);
+        const sorted = data.filter(Boolean).sort((a, b) => a.lastModified - b.lastModified);
 
-        for (const list of data) {
+        for (const list of sorted) {
             createList(list.title, list.description, new Date(list.lastModified), list.id);
         }
     } catch (error) {
