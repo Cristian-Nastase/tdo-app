@@ -5,22 +5,21 @@ const lists = new Map();
 const maxLists = 20;
 const usedIds = new Set();
 
-export const returnListData = function(id) {
+export const returnListData = function (id) {
     const list = lists.get(id);
 
     const title = list?.title ?? "";
     const description = list?.description ?? "";
 
     return { title, description };
-}
+};
 
-const generateListId = function() {
-    if(lists.size === maxLists)
-        throw new Error("No more tasks available, reached the limit.");
+const generateListId = function () {
+    if (lists.size === maxLists) throw new Error("No more tasks available, reached the limit.");
 
     let id = Math.floor(Math.random() * maxLists);
-    
-    while(usedIds.has(id)) {
+
+    while (usedIds.has(id)) {
         id = Math.floor(Math.random() * maxLists);
     }
 
@@ -28,44 +27,49 @@ const generateListId = function() {
     return id;
 };
 
-const extractIds = function() {
+const extractIds = function () {
     const data = JSON.parse(localStorage.getItem("used-ids"));
 
-    if(!data)
-        return [];
-    
-    return data;
-}
+    if (!data) return [];
 
-const saveIds = function() {
-    if(!usedIds)
-        return;
+    const ids = data.filter((n) => {
+        return localStorage.getItem(`list-${n}`);
+    });
+
+    const diff = ids.length != data.length;
+
+    return { ids, diff };
+};
+
+const saveIds = function () {
+    if (!usedIds) return;
 
     const arr = Array.from(usedIds.values());
 
     const data = JSON.stringify(arr);
     localStorage.setItem("used-ids", data);
-}
+};
 
 const extractLocalStorage = function (id) {
     const data = JSON.parse(localStorage.getItem(`list-${id}`));
 
-    if (!data)
-        return;
+    if (!data) return;
 
-    createList(data.title, data.description, id);
-}
+    data.lastModified = Date.parse(data.lastModified);
+
+    return data;
+};
 
 const saveLocalStorage = function (id) {
-    if(!lists.size)
-        return;
+    if (!lists.size) return;
 
-    const data = JSON.stringify(lists.get(id));
-    localStorage.setItem(`list-${id}`, data);
-}
+    const list = lists.get(id);
+    const data = { ...list, lastModified: list.lastModified.toJSON() };
+    const jsonData = JSON.stringify(data);
+    localStorage.setItem(`list-${id}`, jsonData);
+};
 
-
-export const createList = function (title, description, listId = null) {
+export const createList = function (title, description, date = null, listId = null) {
     if (lists.size === maxLists) {
         console.log("No more lists available");
         return;
@@ -77,31 +81,33 @@ export const createList = function (title, description, listId = null) {
         id,
         title,
         description,
-        tasks: []
+        lastModified: date ?? new Date(),
+        tasks: [],
     };
 
     lists.set(id, list);
 
     createListElement(title, id);
 
-    if(!state.loading) {
+    if (!state.loading) {
         saveLocalStorage(id);
         saveIds();
     }
-}
+};
 
-export const editList = function(id, title, description) {
+export const editList = function (id, title, description) {
     const intId = parseInt(id);
 
     const list = lists.get(intId);
 
     list.title = title;
     list.description = description;
+    list.lastModified = new Date(Date.now());
 
     saveLocalStorage(intId);
-}
+};
 
-export const removeList = function(e) {
+export const removeList = function (e) {
     const element = e.currentTarget;
 
     const id = parseInt(element.dataset.index);
@@ -113,17 +119,17 @@ export const removeList = function(e) {
 
     localStorage.removeItem(`list-${id}`);
     saveIds();
-    
+
     setTimeout(() => {
         element.remove();
-    } , 200);
-}
+    }, 200);
+};
 
 export const enterList = function (e) {
     state.currentList = e.currentTarget.dataset.index;
     setStorageState();
     location.assign("list.html");
-}
+};
 
 const loadMenu = function () {
     state.inMenu = true;
@@ -134,20 +140,28 @@ const loadMenu = function () {
     loadUI();
 
     try {
-        const ids = extractIds();
+        const { ids, diff } = extractIds();
         ids.forEach(usedIds.add, usedIds);
 
-        for(const id of ids) {
-            extractLocalStorage(id);
+        if(diff) saveIds();
+
+        const data = [];
+        for (const id of ids) {
+            data.push(extractLocalStorage(id));
         }
-    }
-    catch(error) {
+
+        data.filter(Boolean).sort((a, b) => a.lastModified - b.lastModified);
+
+        for (const list of data) {
+            createList(list.title, list.description, new Date(list.lastModified), list.id);
+        }
+    } catch (error) {
         console.error(error);
         console.warn("No data found, will load an empty menu.");
     }
-    
+
     state.loading = false;
     setStorageState();
-}
+};
 
 window.addEventListener("load", loadMenu);
