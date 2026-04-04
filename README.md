@@ -27,7 +27,7 @@ A to-do app meant to look and feel minimalistic, with the developer experience i
     <li>Minimalist and elegant design inspired by <a style="color: #e2b714" href="https://monkeytype.com/">MonkeyType</a></li>
     <li>Create,delete and edit lists</li>
     <li>Manage tasks</li>
-    <li>Drag & drop (IN PROGRESS)</li>
+    <li>Drag & drop sorting</li>
     <li>Command line to control the interface (IN PROGRESS)</li>
 </ul>
 
@@ -40,6 +40,8 @@ This is really the motive behind this project. <b style="color: #e2b714">TDO!</b
 The project encapsulates my skills obtained throughout my Front-end learning journey. I wanted to use only browser-standard features, since I focused only on the vanilla-side of things.
 <br><br>
 This was also my first time using Web-components and I have enjoyed working with them. Inspired or not, the first thought that came across my mind when approaching this project, was to reuse and separate the task behaviour from the project, to make it alive on its own, as I was thinking this was more appropriate and posed an interesting challenge.
+<br><br>
+Also, the HTML Drag&Drop API is really good and made my life much easier, as I didn't have to implement it from scratch.
 
 <h2 style="color: #e2b714">Author</h2>
 <b style="font-size: 20px">Cristian Năstase</b>

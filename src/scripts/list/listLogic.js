@@ -1,5 +1,5 @@
 import { state, setStorageState } from '../state.js';
-import { loadUI, createListElement, removeTaskElement } from './listUI.js';
+import { loadUI, createListElement, removeTaskElement, listContainer } from './listUI.js';
 
 const listMap = new Map();
 const maxTasks = 400;
@@ -51,12 +51,13 @@ export const newTask = function (data) {
         try {
             id = createID();
         }
-        catch(error) {
+        catch (error) {
             console.warn("Task limit reached. Delete tasks or create a  new list.");
             return;
         }
         const obj = {
             id,
+            order: listContainer.children.length,
             checked: false,
             ...data,
         };
@@ -85,6 +86,18 @@ export const editTask = function (_id, title) {
     populateLocalStorage();
 }
 
+export const reorderTasks = function () {
+    let index = 0;
+
+    for(const child of listContainer.children) {
+        const task = listMap.get(Number(child.dataset.id));
+        if(!task) return;
+        task.order = index++;
+    }
+
+    populateLocalStorage();
+}
+
 const loadList = function () {
     state.inMenu = false;
     setStorageState();
@@ -102,7 +115,9 @@ const loadList = function () {
 
     loadUI(listData.title, listData.description);
 
-    for (const taskData of listData.tasks) {
+    const tasks = listData.tasks.sort((a, b) => { return a.order - b.order });
+
+    for (const taskData of tasks) {
         newTask(taskData);
     }
 
@@ -144,7 +159,7 @@ export const getTaskContent = function (id, object) {
 
 export const removeTask = function (id) {
     listMap.delete(id);
-    populateLocalStorage();
+    reorderTasks();
 
     removeTaskElement(id);
 }

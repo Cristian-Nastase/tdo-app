@@ -11,7 +11,11 @@ class Task extends HTMLElement {
     }
 
     connectedCallback() {
+        if (this.shadowRoot)
+            return;
+
         const taskTemplate = document.getElementById("task");
+
         this.attachShadow({ mode: 'open' }).appendChild(taskTemplate.content.cloneNode(true));
 
         try {
@@ -26,7 +30,7 @@ class Task extends HTMLElement {
     setContent(data) {
         this.content = data;
 
-        if(!this.rendered) {
+        if (!this.rendered) {
             this.renderData();
             return;
         }
