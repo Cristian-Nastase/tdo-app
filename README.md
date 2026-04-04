@@ -41,7 +41,7 @@ The project encapsulates my skills obtained throughout my Front-end learning jou
 <br><br>
 This was also my first time using Web-components and I have enjoyed working with them. Inspired or not, the first thought that came across my mind when approaching this project, was to reuse and separate the task behaviour from the project, to make it alive on its own, as I was thinking this was more appropriate and posed an interesting challenge.
 <br><br>
-Also, the HTML Drag&Drop API is really good and made my life much easier, as I didn't have to implement it from scratch.
+Also, the HTML Drag&Drop API is really good and made my life much easier, as I didn't have to implement it from scratch + <a href="https://www.jsdelivr.com/package/npm/drag-drop-touch">I found a great polyfill for mobile support</a>.
 
 <h2 style="color: #e2b714">Author</h2>
 <b style="font-size: 20px">Cristian Năstase</b>
