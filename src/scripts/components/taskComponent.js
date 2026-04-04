@@ -63,8 +63,6 @@ class Task extends HTMLElement {
             this.toggleChecked();
         }
 
-        this.addEventListener("contextmenu", (e) => this.toggleSettings(e));
-
         const settingsButton = this.shadowRoot.querySelector(".task__settings");
         settingsButton.addEventListener("click", (e) => this.toggleSettings(e));
 
