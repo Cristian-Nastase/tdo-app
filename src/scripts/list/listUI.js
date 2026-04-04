@@ -38,11 +38,14 @@ export const removeTaskElement = function (id) {
 
 
 const dragStart = function (e) {
-    listContainer.insertBefore(makePlaceholder(this), e.currentTarget);
-
+    if(this.menuActive)
+        this.toggleSettings();
+    
     this.style.opacity = 0;
     const width = this.offsetWidth;
 
+    listContainer.insertBefore(makePlaceholder(this), e.currentTarget);
+    
     this.style.position = "fixed";
     this.style.width = `${width}px`;
 

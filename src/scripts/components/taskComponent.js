@@ -4,10 +4,12 @@ import { startDialog } from '../list/listFormLogic.js';
 class Task extends HTMLElement {
     content;
     rendered;
+    menuActive;
 
     constructor() {
         super();
         this.rendered = false;
+        this.menuActive = false;
     }
 
     connectedCallback() {
@@ -93,11 +95,13 @@ class Task extends HTMLElement {
         setChecked(this.content.id, this.content.checked);
     }
 
-    toggleSettings(e) {
-        e.preventDefault();
+    toggleSettings() {
         const menu = this.shadowRoot.querySelector(".task__menu");
+
         menu.classList.toggle("hidden");
         menu.setAttribute("aria-expanded", menu.getAttribute("aria-expanded") === "true" ? "false" : "true");
+        
+        this.menuActive = !menu.classList.contains("hidden");
     }
 }
 customElements.define("task-node", Task);
