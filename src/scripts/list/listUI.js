@@ -75,8 +75,16 @@ const dragOver = function (e) {
         e.preventDefault();
 
         const draggableTask = document.getElementById("dragged-task");
+        const placeholder = listContainer.querySelector(".placeholder");
 
-        if (e.target.tagName === "TASK-NODE" && draggableTask !== e.target) {
+        if (    
+                e.target.tagName === "TASK-NODE" && 
+                draggableTask !== e.target &&
+                (
+                    placeholder?.nextSibling !== e.target || 
+                    listContainer.lastChild == e.target 
+                )
+            ) {
             const placeholders = listContainer.querySelectorAll(".placeholder");
 
             if (listContainer.lastElementChild == e.target) {
