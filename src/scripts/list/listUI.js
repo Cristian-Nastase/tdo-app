@@ -58,6 +58,7 @@ const dragStart = function (e) {
 const dragEnd = function (e) {
     this.style.opacity = 1;
     this.style.position = "relative";
+    this.style.width = "auto";
     this.removeAttribute("id");
 
     const placeholders = listContainer.querySelectorAll(".placeholder");
