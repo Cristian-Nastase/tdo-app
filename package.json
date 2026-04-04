@@ -6,6 +6,7 @@
     "copy:scripts": "copyfiles -u 1 \"./src/scripts/**/*\" public",
     "copy:html": "copyfiles -u 1 ./src/*.html public",
     "copy": "npm-run-all --parallel copy:*",
+    "minify": "find ./public/scripts -type f -name \"*.js\"| xargs -I {script} sh -c \"minify {script} --fail-on-error > tmp && mv tmp {script}\"",
     "watch:html": "onchange 'src/*.html' -- npm run copy:html",
     "watch:assets": "onchange 'src/assets/**/*' -- npm run copy:assets",
     "watch:scripts": "onchange 'src/scripts/**/*' -- npm run copy:scripts",
@@ -13,17 +14,18 @@
     "watch": "npm-run-all --parallel watch:*",
     "serve": "browser-sync start --server public --files public",
     "start": "npm-run-all copy --parallel watch serve",
-    "build": "npm-run-all copy:* build:*",
+    "build": "npm-run-all copy:* build:* minify",
     "postbuild": "postcss 'public/css/*.css' -u autoprefixer cssnano -r --no-map"
   },
   "dependencies": {
-    "sass": "^1.98.0",
     "autoprefixer": "^10.4.27",
     "browser-sync": "^3.0.4",
     "copyfiles": "^2.4.1",
     "cssnano": "^7.1.4",
+    "minify": "^15.2.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "postcss-cli": "^11.0.1"
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.98.0"
   }
 }
